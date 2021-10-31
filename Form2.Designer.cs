@@ -249,7 +249,7 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 793);
+            this.ClientSize = new System.Drawing.Size(688, 766);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.textNote);
             this.Controls.Add(this.comboBox2);

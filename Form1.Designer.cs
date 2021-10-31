@@ -46,7 +46,7 @@ namespace Course_prod
             this.textRegPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.butnClosePage2 = new System.Windows.Forms.Button();
             this.errorlabel2 = new System.Windows.Forms.Label();
             this.errorlabel1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -61,7 +61,7 @@ namespace Course_prod
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(516, 286);
+            this.tabControl1.Size = new System.Drawing.Size(526, 308);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -78,7 +78,7 @@ namespace Course_prod
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(508, 253);
+            this.tabPage1.Size = new System.Drawing.Size(518, 275);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@ namespace Course_prod
             // 
             // butn_exit
             // 
-            this.butn_exit.Location = new System.Drawing.Point(342, 164);
+            this.butn_exit.Location = new System.Drawing.Point(342, 200);
             this.butn_exit.Name = "butn_exit";
             this.butn_exit.Size = new System.Drawing.Size(152, 59);
             this.butn_exit.TabIndex = 5;
@@ -158,7 +158,7 @@ namespace Course_prod
             // 
             this.tabPage2.Controls.Add(this.errorlabel1);
             this.tabPage2.Controls.Add(this.errorlabel2);
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.butnClosePage2);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.textRegPassword);
@@ -167,7 +167,7 @@ namespace Course_prod
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(508, 253);
+            this.tabPage2.Size = new System.Drawing.Size(518, 275);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -180,10 +180,11 @@ namespace Course_prod
             this.butnGuest.TabIndex = 8;
             this.butnGuest.Text = "Войти как гость";
             this.butnGuest.UseVisualStyleBackColor = true;
+            this.butnGuest.Click += new System.EventHandler(this.butnGuest_Click);
             // 
             // butnRegPage
             // 
-            this.butnRegPage.Location = new System.Drawing.Point(100, 165);
+            this.butnRegPage.Location = new System.Drawing.Point(100, 143);
             this.butnRegPage.Name = "butnRegPage";
             this.butnRegPage.Size = new System.Drawing.Size(155, 41);
             this.butnRegPage.TabIndex = 0;
@@ -199,7 +200,7 @@ namespace Course_prod
             // 
             // textRegPassword
             // 
-            this.textRegPassword.Location = new System.Drawing.Point(100, 97);
+            this.textRegPassword.Location = new System.Drawing.Point(100, 80);
             this.textRegPassword.Name = "textRegPassword";
             this.textRegPassword.Size = new System.Drawing.Size(155, 26);
             this.textRegPassword.TabIndex = 2;
@@ -216,25 +217,26 @@ namespace Course_prod
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 97);
+            this.label5.Location = new System.Drawing.Point(8, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Пароль";
             // 
-            // button2
+            // butnClosePage2
             // 
-            this.button2.Location = new System.Drawing.Point(353, 187);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 54);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.butnClosePage2.Location = new System.Drawing.Point(367, 205);
+            this.butnClosePage2.Name = "butnClosePage2";
+            this.butnClosePage2.Size = new System.Drawing.Size(136, 54);
+            this.butnClosePage2.TabIndex = 5;
+            this.butnClosePage2.Text = "Меню входа";
+            this.butnClosePage2.UseVisualStyleBackColor = true;
+            this.butnClosePage2.Click += new System.EventHandler(this.butnClosePage2_Click);
             // 
             // errorlabel2
             // 
             this.errorlabel2.AutoSize = true;
-            this.errorlabel2.Location = new System.Drawing.Point(276, 97);
+            this.errorlabel2.Location = new System.Drawing.Point(276, 86);
             this.errorlabel2.Name = "errorlabel2";
             this.errorlabel2.Size = new System.Drawing.Size(0, 20);
             this.errorlabel2.TabIndex = 6;
@@ -251,7 +253,7 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 282);
+            this.ClientSize = new System.Drawing.Size(519, 300);
             this.Controls.Add(this.tabControl1);
             this.Name = "Login";
             this.Text = "Login";
@@ -280,7 +282,7 @@ namespace Course_prod
         private System.Windows.Forms.Button butnGuest;
         private System.Windows.Forms.Label errorlabel1;
         private System.Windows.Forms.Label errorlabel2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button butnClosePage2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textRegPassword;

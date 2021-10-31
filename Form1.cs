@@ -13,6 +13,7 @@ namespace Course_prod
 {
 	public partial class Login : Form
 	{
+		string connetionString = @"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True";
 		public Login()
 		{
 			InitializeComponent();
@@ -27,7 +28,6 @@ namespace Course_prod
 
 		private void butn_Auth_Click(object sender, EventArgs e)
 		{
-			string connetionString = @"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True";
 			string Login = textLogin.Text;
 			string Password = textPassword.Text;
 			int Role = 1;
@@ -65,6 +65,28 @@ namespace Course_prod
         private void butnRegistration_Click(object sender, EventArgs e)
         {
 			tabControl1.SelectedTab = tabControl1.TabPages["TabPage2"];
+		}
+
+        private void butnGuest_Click(object sender, EventArgs e)
+        {
+			string Login = "guest";
+			string Password = "guest";
+			int Role = 3;
+			string sqlExpression = "SELECT Password, ID FROM Users WHERE Login = @Login";
+			SqlConnection connetion;
+			connetion = new SqlConnection(connetionString);
+			connetion.Open();
+			SqlCommand command = new SqlCommand(sqlExpression, connetion);
+			SqlParameter LoginParam = new SqlParameter(@"Login", Login);
+			command.Parameters.Add(LoginParam);
+			Form2 fr2 = new Form2(Login, Role);
+			fr2.ShowDialog();
+
+		}
+
+        private void butnClosePage2_Click(object sender, EventArgs e)
+        {
+			tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
 		}
     }
 }
