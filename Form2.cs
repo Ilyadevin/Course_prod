@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace Course_prod
 {
     public partial class Form2 : Form
     {
+        string connetionString = @"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True";
         public int check = 0;
         short error, a, count;
         int i = 0;
-        string priority="";
+        string priority = "";
         public Form2(string param1, int param2)
         {
             InitializeComponent();
@@ -71,14 +72,23 @@ namespace Course_prod
             else if (textS_number.Text == "") { label6.ForeColor = Color.Red; }
             if (textS_number.Text != "")
             {
-                for (a = 0; a <= check - 1; a++)
+                int pass = 0;
+                SqlDataReader DBS_number;
+                string sqlExpression = "SELECT S_number FROM students WHERE S_number = @textS_number";
+                SqlConnection connetion;
+                connetion = new SqlConnection(connetionString);
+                connetion.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connetion);
+                SqlParameter S_Number = new SqlParameter(@"S_number", textS_number);
+                command.Parameters.Add(S_Number);
+                DBS_number = command.ExecuteReader();
+                while (DBS_number.Read())
+                { 
+                    pass = Convert.ToInt32(DBS_number.GetValue(0));
+                }
+                if (Convert.ToInt32(textS_number.Text) == pass)
                 {
-
-                    if (Convert.ToInt16(textS_number.Text) == array1[a].S_number)
-                    {
-                        error -= 1;
-                        break;
-                    }
+                    error -= 1;
                 }
                 if (error == -1)
                 {
@@ -87,6 +97,42 @@ namespace Course_prod
                 }
                 else
                 {
+                    string sql = string.Format("Insert Into students" +
+                            "(Name, Surname, LName, BirthDate, Gender, S_number, Score, Note) Values('{0}','{1}','{2}','{3}')");
+
+                    // Параметризованная команда
+                    /*
+                    using (SqlCommand cmd = new SqlCommand(sql, this.connect))
+                    {
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = "@CarID";
+                        param.Value = id;
+                        param.SqlDbType = SqlDbType.Int;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@Make";
+                        param.Value = make;
+                        param.SqlDbType = SqlDbType.Char;
+                        param.Size = 10;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@Color";
+                        param.Value = color;
+                        param.SqlDbType = SqlDbType.Char;
+                        param.Size = 10;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@PetName";
+                        param.Value = petName;
+                        param.SqlDbType = SqlDbType.Char;
+                        param.Size = 10;
+                        cmd.Parameters.Add(param);
+
+                        cmd.ExecuteNonQuery();
+                    }
                     array1[check] = new Student
                     {
                         Name = textSurname.Text,
@@ -105,7 +151,7 @@ namespace Course_prod
                     MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                /*private void butnFiltred_Click(object sender, EventArgs e)
+                private void butnFiltred_Click(object sender, EventArgs e)
                 {
                             Form2 form2 = new(array1, check);
                             form2.ShowDialog();
@@ -118,6 +164,7 @@ namespace Course_prod
                         }
                     }
                 */
+                }
             }
         }
     }

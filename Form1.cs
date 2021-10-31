@@ -81,7 +81,6 @@ namespace Course_prod
 			command.Parameters.Add(LoginParam);
 			Form2 fr2 = new Form2(Login, Role);
 			fr2.ShowDialog();
-
 		}
 
         private void butnClosePage2_Click(object sender, EventArgs e)
