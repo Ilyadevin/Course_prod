@@ -1,0 +1,11 @@
+C:\Users\Илья\source\repos\Course_prod\bin\Debug\Course_prod.exe.config
+C:\Users\Илья\source\repos\Course_prod\bin\Debug\Course_prod.exe
+C:\Users\Илья\source\repos\Course_prod\bin\Debug\Course_prod.pdb
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.csproj.AssemblyReference.cache
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.Login.resources
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.Properties.Resources.resources
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.csproj.GenerateResource.cache
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.csproj.CoreCompileInputs.cache
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.exe
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.pdb
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.Form2.resources
