@@ -194,9 +194,16 @@ namespace Course_prod
 
         private void butnFiltred_Click_1(object sender, EventArgs e)
         {
-
-            /*Form2 form2 = new(array1, check);
-            form2.ShowDialog();*/
+            string sqlExpression = "SELECT * FROM students WHERE L_Base = @L_Base";
+            SqlConnection connetion;
+            connetion = new SqlConnection(connetionString);
+            connetion.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connetion);
+            SqlParameter S_Number = new SqlParameter(@"L_Base", "Бюджетная");
+            command.Parameters.Add(S_Number);
+            DBS_number = command.ExecuteReader();
+            Form3 form3 = new Form3();
+            form3.ShowDialog();
         }
     } 
 }
