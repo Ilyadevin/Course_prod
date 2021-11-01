@@ -101,34 +101,63 @@ namespace Course_prod
                             "(Name, Surname, LName, BirthDate, Gender, S_number, Score, Note) Values('{0}','{1}','{2}','{3}')");
 
                     // Параметризованная команда
-                    /*
-                    using (SqlCommand cmd = new SqlCommand(sql, this.connect))
+                    
+                    using (SqlCommand cmd = new SqlCommand(sql, connetion))
                     {
                         SqlParameter param = new SqlParameter();
-                        param.ParameterName = "@CarID";
-                        param.Value = id;
+                        param.ParameterName = "@Name";
+                        param.Value = textFirstname;
+                        param.SqlDbType = SqlDbType.VarChar;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@Surname";
+                        param.Value = textSurname;
+                        param.SqlDbType = SqlDbType.VarChar;
+                        param.Size = 10;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@LName";
+                        param.Value = textLname;
+                        param.SqlDbType = SqlDbType.VarChar;
+                        param.Size = 10;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@BirthDate";
+                        param.Value = dateTimePicker1;
+                        param.SqlDbType = SqlDbType.Date;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@Gender";
+                        param.Value = comboBox1.Text;
+                        param.SqlDbType = SqlDbType.Char;
+                        cmd.Parameters.Add(param);
+
+                        param = new SqlParameter();
+                        param.ParameterName = "@S_number";
+                        param.Value = textS_number;
                         param.SqlDbType = SqlDbType.Int;
                         cmd.Parameters.Add(param);
 
                         param = new SqlParameter();
-                        param.ParameterName = "@Make";
-                        param.Value = make;
-                        param.SqlDbType = SqlDbType.Char;
-                        param.Size = 10;
+                        param.ParameterName = "@Score";
+                        param.Value = textScore;
+                        param.SqlDbType = SqlDbType.Int;
                         cmd.Parameters.Add(param);
 
                         param = new SqlParameter();
-                        param.ParameterName = "@Color";
-                        param.Value = color;
-                        param.SqlDbType = SqlDbType.Char;
-                        param.Size = 10;
+                        param.ParameterName = "@Score";
+                        param.Value = textScore;
+                        param.SqlDbType = SqlDbType.Int;
                         cmd.Parameters.Add(param);
 
                         param = new SqlParameter();
-                        param.ParameterName = "@PetName";
-                        param.Value = petName;
-                        param.SqlDbType = SqlDbType.Char;
-                        param.Size = 10;
+                        param.ParameterName = "@Note";
+                        param.Value = textNote;
+                        param.SqlDbType = SqlDbType.VarChar;
                         cmd.Parameters.Add(param);
 
                         cmd.ExecuteNonQuery();
@@ -163,7 +192,7 @@ namespace Course_prod
                             form3.ShowDialog();
                         }
                     }
-                */
+                
                 }
             }
         }
