@@ -83,7 +83,7 @@ namespace Course_prod
                 command.Parameters.Add(S_Number);
                 DBS_number = command.ExecuteReader();
                 while (DBS_number.Read())
-                { 
+                {
                     pass = Convert.ToInt32(DBS_number.GetValue(0));
                 }
                 if (Convert.ToInt32(textS_number.Text) == pass)
@@ -101,100 +101,105 @@ namespace Course_prod
                             "(Name, Surname, LName, BirthDate, Gender, S_number, Score, Note) Values('{0}','{1}','{2}','{3}')");
 
                     // Параметризованная команда
-                    
+
                     using (SqlCommand cmd = new SqlCommand(sql, connetion))
                     {
-                        SqlParameter param = new SqlParameter();
-                        param.ParameterName = "@Name";
-                        param.Value = textFirstname;
-                        param.SqlDbType = SqlDbType.VarChar;
+                        SqlParameter param = new SqlParameter
+                        {
+                            ParameterName = "@Name",
+                            Value = textFirstname,
+                            SqlDbType = SqlDbType.VarChar
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@Surname";
-                        param.Value = textSurname;
-                        param.SqlDbType = SqlDbType.VarChar;
-                        param.Size = 10;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@Surname",
+                            Value = textSurname,
+                            SqlDbType = SqlDbType.VarChar,
+                            Size = 10
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@LName";
-                        param.Value = textLname;
-                        param.SqlDbType = SqlDbType.VarChar;
-                        param.Size = 10;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@LName",
+                            Value = textLname,
+                            SqlDbType = SqlDbType.VarChar,
+                            Size = 10
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@BirthDate";
-                        param.Value = dateTimePicker1;
-                        param.SqlDbType = SqlDbType.Date;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@BirthDate",
+                            Value = dateTimePicker1,
+                            SqlDbType = SqlDbType.Date
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@Gender";
-                        param.Value = comboBox1.Text;
-                        param.SqlDbType = SqlDbType.Char;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@Gender",
+                            Value = comboBox1.Text,
+                            SqlDbType = SqlDbType.Char
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@S_number";
-                        param.Value = textS_number;
-                        param.SqlDbType = SqlDbType.Int;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@S_number",
+                            Value = textS_number,
+                            SqlDbType = SqlDbType.Int
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@Score";
-                        param.Value = textScore;
-                        param.SqlDbType = SqlDbType.Int;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@Score",
+                            Value = textScore,
+                            SqlDbType = SqlDbType.Int
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@Score";
-                        param.Value = textScore;
-                        param.SqlDbType = SqlDbType.Int;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@Score",
+                            Value = textScore,
+                            SqlDbType = SqlDbType.Int
+                        };
                         cmd.Parameters.Add(param);
 
-                        param = new SqlParameter();
-                        param.ParameterName = "@Note";
-                        param.Value = textNote;
-                        param.SqlDbType = SqlDbType.VarChar;
+                        param = new SqlParameter
+                        {
+                            ParameterName = "@Note",
+                            Value = textNote,
+                            SqlDbType = SqlDbType.VarChar
+                        };
                         cmd.Parameters.Add(param);
 
                         cmd.ExecuteNonQuery();
                     }
-                    array1[check] = new Student
-                    {
-                        Name = textSurname.Text,
-                        Surname = textFirstname.Text,
-                        LName = textLname.Text,
-                        DateD = dateTimePicker1.Value.Day,
-                        DateM = dateTimePicker1.Value.Month,
-                        DateY = dateTimePicker1.Value.Year,
-                        Gender = comboBox1.Text,
-                        S_number = Convert.ToInt32(textS_number.Text),
-                        L_base = comboBox2.Text,
-                        Score = Convert.ToInt32(textScore.Text),
-                        Note = textNote.Text
-                    };
                     check++;
                     MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                private void butnFiltred_Click(object sender, EventArgs e)
-                {
-                            Form2 form2 = new(array1, check);
-                            form2.ShowDialog();
-                        }
-
-                private void butnShowStud_Click(object sender, EventArgs e)
-                        {
-                            Form3 form3 = new(array1, check);
-                            form3.ShowDialog();
-                        }
-                    }
-                
-                }
             }
         }
-    }
+
+        private void butnShowStud_Click_1(object sender, EventArgs e)
+        {
+            /*Form3 form3 = new(array1, check);
+            form3.ShowDialog();*/
+        }
+
+        private void butnFiltred_Click_1(object sender, EventArgs e)
+        {
+
+            /*Form2 form2 = new(array1, check);
+            form2.ShowDialog();*/
+        }
+    } 
 }
+    
+
+
