@@ -41,27 +41,11 @@ namespace Course_prod
             textScore.Text = "0";
             textS_number.Text = Convert.ToString(check);
         }
-        public class Student
-        {
-            public string Name;	  // Имя
-            public string Surname;  // Фамилия
-            public string LName;	  // Отчество
-            public int DateD;	  // Число ДР
-            public int DateM;	  //  Месяц ДР
-            public int DateY;	  // Год ДР
-            public string Gender;	  // Пол
-            public int S_number;	  // № студенческого билета 
-            public string L_base;	  // основа обучения
-            public int Score;	  // количество задолженностей
-            public string Note;	  // примечание
-        }
 
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        public Student[] array1 = new Student[15];
 
         private void butnAddingStudent_Click(object sender, EventArgs e)
         {
@@ -101,84 +85,50 @@ namespace Course_prod
                             "(Name, Surname, LName, BirthDate, Gender, S_number, Score, Note) Values('{0}','{1}','{2}','{3}')");
 
                     // Параметризованная команда
-
-                    using (SqlCommand cmd = new SqlCommand(sql, connetion))
+                    using (SqlConnection sc = new SqlConnection())
                     {
-                        SqlParameter param = new SqlParameter
-                        {
-                            ParameterName = "@Name",
-                            Value = textFirstname,
-                            SqlDbType = SqlDbType.VarChar
-                        };
-                        cmd.Parameters.Add(param);
+                        sc.ConnectionString = "Data Source=localhost;Initial Catalog=LoginScreen;Integrated Security=True";
+                        sc.Open();
 
-                        param = new SqlParameter
+                        using (SqlCommand com = sc.CreateCommand())
                         {
-                            ParameterName = "@Surname",
-                            Value = textSurname,
-                            SqlDbType = SqlDbType.VarChar,
-                            Size = 10
-                        };
-                        cmd.Parameters.Add(param);
+                            com.CommandText =
+                              "insert into students(\n" +
+                              "  id,\n" +
+                              "  Name,\n" +
+                              "  Surname,\n" +
+                              "  LName,\n" +
+                              "  BirthDate,\n" +
+                              "  Gender,\n" +
+                              "  S_number,\n" +
+                              "  Score,\n" +
+                              "  L_base,\n" +
+                              "  Note)\n" +
+                              "values(\n" +
+                              "  @Id,\n" +
+                              "  @Name,\n" +
+                              "  @Surname,\n" +
+                              "  @LName,\n" +
+                              "  @BirthDate,\n" +
+                              "  @Gender,\n" +
+                              "  @S_number,\n" +
+                              "  @Score,\n" +
+                              "  @L_base,\n" +
+                              "  @Note)";
 
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@LName",
-                            Value = textLname,
-                            SqlDbType = SqlDbType.VarChar,
-                            Size = 10
-                        };
-                        cmd.Parameters.Add(param);
-
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@BirthDate",
-                            Value = dateTimePicker1,
-                            SqlDbType = SqlDbType.Date
-                        };
-                        cmd.Parameters.Add(param);
-
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@Gender",
-                            Value = comboBox1.Text,
-                            SqlDbType = SqlDbType.Char
-                        };
-                        cmd.Parameters.Add(param);
-
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@S_number",
-                            Value = textS_number,
-                            SqlDbType = SqlDbType.Int
-                        };
-                        cmd.Parameters.Add(param);
-
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@Score",
-                            Value = textScore,
-                            SqlDbType = SqlDbType.Int
-                        };
-                        cmd.Parameters.Add(param);
-
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@Score",
-                            Value = textScore,
-                            SqlDbType = SqlDbType.Int
-                        };
-                        cmd.Parameters.Add(param);
-
-                        param = new SqlParameter
-                        {
-                            ParameterName = "@Note",
-                            Value = textNote,
-                            SqlDbType = SqlDbType.VarChar
-                        };
-                        cmd.Parameters.Add(param);
-
-                        cmd.ExecuteNonQuery();
+                            //TODO: Change my arbitrary "80" to actual Stock fields' sizes! 
+                            com.Parameters.Add("@id", SqlDbType.Int).Value = check;
+                            com.Parameters.Add("@Name", SqlDbType.VarChar, 20).Value = textFirstname.Text;
+                            com.Parameters.Add("@Surname", SqlDbType.VarChar, 20).Value = textSurname.Text;
+                            com.Parameters.Add("@LName", SqlDbType.VarChar, 20).Value = textLname.Text;
+                            com.Parameters.Add("@S_number", SqlDbType.Int).Value = textS_number.Text;
+                            com.Parameters.Add("@Score", SqlDbType.Int).Value = textScore.Text;
+                            com.Parameters.Add("@BirthDate", SqlDbType.Date).Value = dateTimePicker1.Text;
+                            com.Parameters.Add("@Gender", SqlDbType.VarChar, 20).Value = comboBox1.Text;
+                            com.Parameters.Add("@L_base", SqlDbType.VarChar, 20).Value = comboBox2.Text;
+                            com.Parameters.Add("@Note", SqlDbType.VarChar, 256).Value = textNote.Text;
+                            com.ExecuteNonQuery();
+                        }
                     }
                     check++;
                     MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -202,8 +152,6 @@ namespace Course_prod
             SqlParameter S_Number = new SqlParameter(@"L_Base", "Бюджетная");
             command.Parameters.Add(S_Number);
             DBS_number = command.ExecuteReader();
-            Form3 form3 = new Form3();
-            form3.ShowDialog();
         }
     } 
 }
