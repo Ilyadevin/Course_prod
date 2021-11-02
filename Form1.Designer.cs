@@ -31,6 +31,7 @@ namespace Course_prod
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.butnGuest = new System.Windows.Forms.Button();
             this.butnRegistration = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.butn_exit = new System.Windows.Forms.Button();
@@ -40,15 +41,14 @@ namespace Course_prod
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.butnGuest = new System.Windows.Forms.Button();
-            this.butnRegPage = new System.Windows.Forms.Button();
-            this.textRegLogin = new System.Windows.Forms.TextBox();
-            this.textRegPassword = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.butnClosePage2 = new System.Windows.Forms.Button();
-            this.errorlabel2 = new System.Windows.Forms.Label();
             this.errorlabel1 = new System.Windows.Forms.Label();
+            this.errorlabel2 = new System.Windows.Forms.Label();
+            this.butnClosePage2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textRegPassword = new System.Windows.Forms.TextBox();
+            this.textRegLogin = new System.Windows.Forms.TextBox();
+            this.butnRegPage = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -82,6 +82,16 @@ namespace Course_prod
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // butnGuest
+            // 
+            this.butnGuest.Location = new System.Drawing.Point(12, 58);
+            this.butnGuest.Name = "butnGuest";
+            this.butnGuest.Size = new System.Drawing.Size(194, 36);
+            this.butnGuest.TabIndex = 8;
+            this.butnGuest.Text = "Войти как гость";
+            this.butnGuest.UseVisualStyleBackColor = true;
+            this.butnGuest.Click += new System.EventHandler(this.butnGuest_Click);
             // 
             // butnRegistration
             // 
@@ -172,56 +182,21 @@ namespace Course_prod
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // butnGuest
+            // errorlabel1
             // 
-            this.butnGuest.Location = new System.Drawing.Point(12, 58);
-            this.butnGuest.Name = "butnGuest";
-            this.butnGuest.Size = new System.Drawing.Size(194, 36);
-            this.butnGuest.TabIndex = 8;
-            this.butnGuest.Text = "Войти как гость";
-            this.butnGuest.UseVisualStyleBackColor = true;
-            this.butnGuest.Click += new System.EventHandler(this.butnGuest_Click);
+            this.errorlabel1.AutoSize = true;
+            this.errorlabel1.Location = new System.Drawing.Point(276, 26);
+            this.errorlabel1.Name = "errorlabel1";
+            this.errorlabel1.Size = new System.Drawing.Size(0, 20);
+            this.errorlabel1.TabIndex = 7;
             // 
-            // butnRegPage
+            // errorlabel2
             // 
-            this.butnRegPage.Location = new System.Drawing.Point(100, 143);
-            this.butnRegPage.Name = "butnRegPage";
-            this.butnRegPage.Size = new System.Drawing.Size(155, 41);
-            this.butnRegPage.TabIndex = 0;
-            this.butnRegPage.Text = "Регистрация";
-            this.butnRegPage.UseVisualStyleBackColor = true;
-            // 
-            // textRegLogin
-            // 
-            this.textRegLogin.Location = new System.Drawing.Point(100, 26);
-            this.textRegLogin.Name = "textRegLogin";
-            this.textRegLogin.Size = new System.Drawing.Size(155, 26);
-            this.textRegLogin.TabIndex = 1;
-            // 
-            // textRegPassword
-            // 
-            this.textRegPassword.Location = new System.Drawing.Point(100, 80);
-            this.textRegPassword.Name = "textRegPassword";
-            this.textRegPassword.Size = new System.Drawing.Size(155, 26);
-            this.textRegPassword.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Логин";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Пароль";
+            this.errorlabel2.AutoSize = true;
+            this.errorlabel2.Location = new System.Drawing.Point(276, 86);
+            this.errorlabel2.Name = "errorlabel2";
+            this.errorlabel2.Size = new System.Drawing.Size(0, 20);
+            this.errorlabel2.TabIndex = 6;
             // 
             // butnClosePage2
             // 
@@ -233,21 +208,51 @@ namespace Course_prod
             this.butnClosePage2.UseVisualStyleBackColor = true;
             this.butnClosePage2.Click += new System.EventHandler(this.butnClosePage2_Click);
             // 
-            // errorlabel2
+            // label5
             // 
-            this.errorlabel2.AutoSize = true;
-            this.errorlabel2.Location = new System.Drawing.Point(276, 86);
-            this.errorlabel2.Name = "errorlabel2";
-            this.errorlabel2.Size = new System.Drawing.Size(0, 20);
-            this.errorlabel2.TabIndex = 6;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Пароль";
             // 
-            // errorlabel1
+            // label4
             // 
-            this.errorlabel1.AutoSize = true;
-            this.errorlabel1.Location = new System.Drawing.Point(276, 26);
-            this.errorlabel1.Name = "errorlabel1";
-            this.errorlabel1.Size = new System.Drawing.Size(0, 20);
-            this.errorlabel1.TabIndex = 7;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Логин";
+            // 
+            // textRegPassword
+            // 
+            this.textRegPassword.Location = new System.Drawing.Point(100, 80);
+            this.textRegPassword.Name = "textRegPassword";
+            this.textRegPassword.Size = new System.Drawing.Size(155, 26);
+            this.textRegPassword.TabIndex = 2;
+            this.textRegPassword.Enter += new System.EventHandler(this.textRegPassword_Enter);
+            this.textRegPassword.Leave += new System.EventHandler(this.textRegPassword_Leave);
+            // 
+            // textRegLogin
+            // 
+            this.textRegLogin.Location = new System.Drawing.Point(100, 26);
+            this.textRegLogin.Name = "textRegLogin";
+            this.textRegLogin.Size = new System.Drawing.Size(155, 26);
+            this.textRegLogin.TabIndex = 1;
+            this.textRegLogin.Enter += new System.EventHandler(this.textRegLogin_Enter);
+            this.textRegLogin.Leave += new System.EventHandler(this.textRegLogin_Leave);
+            // 
+            // butnRegPage
+            // 
+            this.butnRegPage.Location = new System.Drawing.Point(100, 143);
+            this.butnRegPage.Name = "butnRegPage";
+            this.butnRegPage.Size = new System.Drawing.Size(155, 41);
+            this.butnRegPage.TabIndex = 0;
+            this.butnRegPage.Text = "Регистрация";
+            this.butnRegPage.UseVisualStyleBackColor = true;
+            this.butnRegPage.Click += new System.EventHandler(this.butnRegPage_Click);
             // 
             // Login
             // 

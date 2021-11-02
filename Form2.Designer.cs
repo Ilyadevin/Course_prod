@@ -71,7 +71,7 @@ namespace Course_prod
             this.butnFiltred.TabIndex = 1;
             this.butnFiltred.Text = "Фильтрация списка";
             this.butnFiltred.UseVisualStyleBackColor = true;
-            this.butnFiltred.Click += new System.EventHandler(this.butnFiltred_Click_1);
+            //this.butnFiltred.Click += new System.EventHandler(this.butnFiltred_Click_1);
             // 
             // butnShowStud
             // 
@@ -81,7 +81,7 @@ namespace Course_prod
             this.butnShowStud.TabIndex = 2;
             this.butnShowStud.Text = "Отображение всего списка";
             this.butnShowStud.UseVisualStyleBackColor = true;
-            this.butnShowStud.Click += new System.EventHandler(this.butnShowStud_Click_1);
+            //this.butnShowStud.Click += new System.EventHandler(this.butnShowStud_Click_1);
             // 
             // label1
             // 

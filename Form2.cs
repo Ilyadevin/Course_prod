@@ -57,104 +57,101 @@ namespace Course_prod
             if (textS_number.Text != "")
             {
                 int pass = 0;
-                SqlDataReader DBS_number;
-                string sqlExpression = "SELECT S_number FROM students WHERE S_number = @textS_number";
+                int number = Convert.ToInt32(textS_number.Text);
+                string sqlExpression = $"SELECT S_number FROM dbo.students where S_number = {Convert.ToString(number)}";
                 SqlConnection connetion;
                 connetion = new SqlConnection(connetionString);
                 connetion.Open();
                 SqlCommand command = new SqlCommand(sqlExpression, connetion);
-                SqlParameter S_Number = new SqlParameter(@"S_number", textS_number);
-                command.Parameters.Add(S_Number);
-                DBS_number = command.ExecuteReader();
-                while (DBS_number.Read())
+                command.CommandText = sqlExpression;
+                Int32 S_number_DB = (Int32)command.ExecuteScalar();
+#pragma warning disable CS0472 // Результат значения всегда одинаковый, так как значение этого типа никогда не равно NULL
+                if (S_number_DB != null)
+#pragma warning restore CS0472 // Результат значения всегда одинаковый, так как значение этого типа никогда не равно NULL
                 {
-                    pass = Convert.ToInt32(DBS_number.GetValue(0));
-                }
-                if (Convert.ToInt32(textS_number.Text) == pass)
-                {
-                    error -= 1;
-                }
-                if (error == -1)
-                {
-                    error = 0;
                     MessageBox.Show("Такой студентческий уже есть", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                /*
                 else
-                {
+                { 
                     string sql = string.Format("Insert Into students" +
-                            "(Name, Surname, LName, BirthDate, Gender, S_number, Score, Note) Values('{0}','{1}','{2}','{3}')");
+                                "(Name, Surname, LName, BirthDate, Gender, S_number, Score, Note) Values('{0}','{1}','{2}','{3}')");
 
-                    // Параметризованная команда
-                    using (SqlConnection sc = new SqlConnection())
-                    {
-                        sc.ConnectionString = "Data Source=localhost;Initial Catalog=LoginScreen;Integrated Security=True";
-                        sc.Open();
-
-                        using (SqlCommand com = sc.CreateCommand())
+                        // Параметризованная команда
+                        using (SqlConnection sc = new SqlConnection())
                         {
-                            com.CommandText =
-                              "insert into students(\n" +
-                              "  id,\n" +
-                              "  Name,\n" +
-                              "  Surname,\n" +
-                              "  LName,\n" +
-                              "  BirthDate,\n" +
-                              "  Gender,\n" +
-                              "  S_number,\n" +
-                              "  Score,\n" +
-                              "  L_base,\n" +
-                              "  Note)\n" +
-                              "values(\n" +
-                              "  @Id,\n" +
-                              "  @Name,\n" +
-                              "  @Surname,\n" +
-                              "  @LName,\n" +
-                              "  @BirthDate,\n" +
-                              "  @Gender,\n" +
-                              "  @S_number,\n" +
-                              "  @Score,\n" +
-                              "  @L_base,\n" +
-                              "  @Note)";
+                            sc.ConnectionString = "Data Source=localhost;Initial Catalog=LoginScreen;Integrated Security=True";
+                            sc.Open();
 
-                            //TODO: Change my arbitrary "80" to actual Stock fields' sizes! 
-                            com.Parameters.Add("@id", SqlDbType.Int).Value = check;
-                            com.Parameters.Add("@Name", SqlDbType.VarChar, 20).Value = textFirstname.Text;
-                            com.Parameters.Add("@Surname", SqlDbType.VarChar, 20).Value = textSurname.Text;
-                            com.Parameters.Add("@LName", SqlDbType.VarChar, 20).Value = textLname.Text;
-                            com.Parameters.Add("@S_number", SqlDbType.Int).Value = textS_number.Text;
-                            com.Parameters.Add("@Score", SqlDbType.Int).Value = textScore.Text;
-                            com.Parameters.Add("@BirthDate", SqlDbType.Date).Value = dateTimePicker1.Text;
-                            com.Parameters.Add("@Gender", SqlDbType.VarChar, 20).Value = comboBox1.Text;
-                            com.Parameters.Add("@L_base", SqlDbType.VarChar, 20).Value = comboBox2.Text;
-                            com.Parameters.Add("@Note", SqlDbType.VarChar, 256).Value = textNote.Text;
-                            com.ExecuteNonQuery();
+                            using (SqlCommand com = sc.CreateCommand())
+                            {
+                                com.CommandText =
+                                  "insert into students(\n" +
+                                  "  id,\n" +
+                                  "  Name,\n" +
+                                  "  Surname,\n" +
+                                  "  LName,\n" +
+                                  "  BirthDate,\n" +
+                                  "  Gender,\n" +
+                                  "  S_number,\n" +
+                                  "  Score,\n" +
+                                  "  L_base,\n" +
+                                  "  Note)\n" +
+                                  "values(\n" +
+                                  "  @Id,\n" +
+                                  "  @Name,\n" +
+                                  "  @Surname,\n" +
+                                  "  @LName,\n" +
+                                  "  @BirthDate,\n" +
+                                  "  @Gender,\n" +
+                                  "  @S_number,\n" +
+                                  "  @Score,\n" +
+                                  "  @L_base,\n" +
+                                  "  @Note)";
+
+                                //TODO: Change my arbitrary "80" to actual Stock fields' sizes! 
+                                com.Parameters.Add("@id", SqlDbType.Int).Value = check;
+                                com.Parameters.Add("@Name", SqlDbType.VarChar, 20).Value = textFirstname.Text;
+                                com.Parameters.Add("@Surname", SqlDbType.VarChar, 20).Value = textSurname.Text;
+                                com.Parameters.Add("@LName", SqlDbType.VarChar, 20).Value = textLname.Text;
+                                com.Parameters.Add("@S_number", SqlDbType.Int).Value = textS_number.Text;
+                                com.Parameters.Add("@Score", SqlDbType.Int).Value = textScore.Text;
+                                com.Parameters.Add("@BirthDate", SqlDbType.Date).Value = dateTimePicker1.Text;
+                                com.Parameters.Add("@Gender", SqlDbType.VarChar, 20).Value = comboBox1.Text;
+                                com.Parameters.Add("@L_base", SqlDbType.VarChar, 20).Value = comboBox2.Text;
+                                com.Parameters.Add("@Note", SqlDbType.VarChar, 256).Value = textNote.Text;
+                                com.ExecuteNonQuery();
+                            }
                         }
+                        check++;
+                        MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    check++;
-                    MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
 
-        private void butnShowStud_Click_1(object sender, EventArgs e)
-        {
-            /*Form3 form3 = new(array1, check);
-            form3.ShowDialog();*/
-        }
+                private void butnShowStud_Click_1(object sender, EventArgs e)
+                {
+                    /*Form3 form3 = new(array1, check);
+                    form3.ShowDialog();
+                }
 
-        private void butnFiltred_Click_1(object sender, EventArgs e)
-        {
-            string sqlExpression = "SELECT * FROM students WHERE L_Base = @L_Base";
-            SqlConnection connetion;
-            connetion = new SqlConnection(connetionString);
-            connetion.Open();
-            SqlCommand command = new SqlCommand(sqlExpression, connetion);
-            SqlParameter S_Number = new SqlParameter(@"L_Base", "Бюджетная");
-            command.Parameters.Add(S_Number);
-            DBS_number = command.ExecuteReader();
+                private void butnFiltred_Click_1(object sender, EventArgs e)
+                {
+                    /*string sqlExpression = "SELECT * FROM students WHERE L_Base = @L_Base";
+                    SqlConnection connetion;
+                    connetion = new SqlConnection(connetionString);
+                    connetion.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connetion);
+                    SqlParameter S_Number = new SqlParameter(@"L_Base", "Бюджетная");
+                    command.Parameters.Add(S_Number);
+                    DBS_number = command.ExecuteReader();*/
+            }
         }
-    } 
+    }
 }
+
+            
+
     
 
 

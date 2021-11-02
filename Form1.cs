@@ -19,6 +19,50 @@ namespace Course_prod
 			InitializeComponent();
 			tabPage1.Text = "Авторизация";
 			tabPage2.Text = "Регистрация";
+			textRegLogin.Text = "Введите логин";
+			textRegPassword.Text = "Введите пароль";
+		}
+		private void butnRegistration_Click(object sender, EventArgs e)
+		{
+			tabControl1.SelectedTab = tabControl1.TabPages["TabPage2"];
+		}
+		private void butnClosePage2_Click(object sender, EventArgs e)
+		{
+			tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
+		}
+
+
+		private void textRegLogin_Enter(object sender, EventArgs e)
+		{
+			if (textRegLogin.Text == "Введите логин")
+			{
+				textRegLogin.Text = "";
+			}
+		}
+
+		private void textRegPassword_Enter(object sender, EventArgs e)
+		{
+			if (textRegPassword.Text == "Введите пароль")
+			{
+				textRegPassword.Text = "";
+			}
+
+		}
+
+		private void textRegPassword_Leave(object sender, EventArgs e)
+		{
+			if (textRegPassword.Text == "")
+			{
+				textRegPassword.Text = "Введите пароль";
+			}
+		}
+
+		private void textRegLogin_Leave(object sender, EventArgs e)
+		{
+			if (textRegLogin.Text == "")
+			{
+				textRegLogin.Text = "Введите логин";
+			}
 		}
 
 		private void butn_exit_Click(object sender, EventArgs e)
@@ -32,40 +76,29 @@ namespace Course_prod
 			string Password = textPassword.Text;
 			int Role = 1;
 			string ID = "0";
-			SqlDataReader DBPassword;
-			string pass = "";
-			string sqlExpression = "SELECT Password, ID FROM Users WHERE Login = @Login";
-			SqlConnection connetion;
-			connetion = new SqlConnection(connetionString);
-			connetion.Open();
-			SqlCommand command = new SqlCommand(sqlExpression, connetion);
+			SqlDataAdapter adapter = new SqlDataAdapter();
+			DB dB = new DB();
+			DataTable table = new DataTable();
+			SqlCommand command = new SqlCommand("SELECT Password, ID, Login FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection());
 			SqlParameter LoginParam = new SqlParameter(@"Login", Login);
+			SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
 			command.Parameters.Add(LoginParam);
-			DBPassword = command.ExecuteReader();
-			while (DBPassword.Read())
+			command.Parameters.Add(PasswordParam);
+			adapter.SelectCommand = command;
+			adapter.Fill(table);
+			if (table.Rows.Count > 0)
 			{
-				pass = Convert.ToString(DBPassword.GetValue(0));
-				ID = Convert.ToString(DBPassword.GetValue(1));
+				MessageBox.Show("Успешная авторизация!");
+				Form2 fr2 = new Form2(Login, Role);
+				fr2.ShowDialog();
+				
 			}
-			if (DBPassword.HasRows)
+			else
 			{
-				if (pass != Password)
-				{
-					MessageBox.Show("Пароль неверный");
-				}
-				else
-				{
-					Form2 fr2 = new Form2(Login, Role);
-					fr2.ShowDialog();
-				}
+				MessageBox.Show("Пароль неверный");
 			}
-
 		}
 
-        private void butnRegistration_Click(object sender, EventArgs e)
-        {
-			tabControl1.SelectedTab = tabControl1.TabPages["TabPage2"];
-		}
 
         private void butnGuest_Click(object sender, EventArgs e)
         {
@@ -83,9 +116,128 @@ namespace Course_prod
 			fr2.ShowDialog();
 		}
 
-        private void butnClosePage2_Click(object sender, EventArgs e)
-        {
-			tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
+		private void butnRegPage_Click(object sender, EventArgs e)
+		{
+			if (textRegLogin.Text == "Введите логин")
+            {
+				MessageBox.Show("Нужно ввести логин!");
+				return;
+            }
+			if (textRegPassword.Text == "Введите пароль")
+			{
+				MessageBox.Show("Нужно ввести пароль!");
+				return;
+			}
+            if (isUserExist()) 
+			{
+				return;
+			}
+			if (strength_check() is false)
+            {
+				MessageBox.Show("Недостаточно сложный пароль!");
+				return;
+			}
+			DB dB = new DB();
+			SqlCommand command = new SqlCommand("INSERT INTO dbo.users (Login, Password, Priority) VALUES (@loginu, @passwordu, @priority)", dB.GetConnection());
+			command.Parameters.Add("@loginu", SqlDbType.VarChar).Value = textRegLogin.Text;
+			command.Parameters.Add("@Passwordu", SqlDbType.VarChar).Value = textRegPassword.Text;
+			command.Parameters.Add("@priority", SqlDbType.Int).Value = 3;
+			dB.openConnection();
+			if (command.ExecuteNonQuery() == 1)
+            {
+				MessageBox.Show("Аккаунт был создан");
+            }
+            else
+            {
+				MessageBox.Show("Аккаунт не был создан");
+			}
+			dB.closeConnection();
 		}
-    }
+		public Boolean isUserExist()
+        {
+			SqlDataAdapter adapter = new SqlDataAdapter();
+			DB dB = new DB();
+			DataTable table = new DataTable();
+			SqlCommand command = new SqlCommand("SELECT Login FROM Users WHERE Login = @Login", dB.GetConnection());
+			command.Parameters.Add("@Login", SqlDbType.VarChar).Value = textRegLogin.Text;
+			adapter.SelectCommand = command;
+			adapter.Fill(table);
+			if (table.Rows.Count > 0)
+			{
+				MessageBox.Show("Такой логин уже есть! Введите другой");
+				return true;
+
+			}
+			else
+			{
+				return false;
+			}
+        }
+		public Boolean strength_check()
+		{
+			string pass = textRegPassword.Text;
+			int strength = 0;
+			if (pass.Length > 5)
+			{
+				strength++;
+				if (ContainsDigit(pass)) strength++;
+				if (ContainsLowerLetter(pass)) strength++;
+				if (ContainsPunctuation(pass)) strength++;
+				if (ContainsSeparator(pass)) strength++;
+				if (ContainsUpperLetter(pass)) strength++;
+				return true;
+			}
+			else { return false; }
+		}
+
+		static bool ContainsLowerLetter(string pass)
+		{
+			foreach (char c in pass)
+			{
+				if ((Char.IsLetter(c)) && (Char.IsLower(c)))
+					return true;
+			}
+			return false;
+		}
+
+		static bool ContainsUpperLetter(string pass)
+		{
+			foreach (char c in pass)
+			{
+				if ((Char.IsLetter(c)) && (Char.IsUpper(c)))
+					return true;
+			}
+			return false;
+		}
+
+		static bool ContainsDigit(string pass)
+		{
+			foreach (char c in pass)
+			{
+				if (Char.IsDigit(c))
+					return true;
+			}
+			return false;
+		}
+
+		static bool ContainsPunctuation(string pass)
+		{
+			foreach (char c in pass)
+			{
+				if (Char.IsPunctuation(c))
+					return true;
+			}
+			return false;
+		}
+
+		static bool ContainsSeparator(string pass)
+		{
+			foreach (char c in pass)
+			{
+				if (Char.IsSeparator(c))
+					return true;
+			}
+			return false;
+		}
+	}
 }
