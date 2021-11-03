@@ -8,7 +8,7 @@ namespace Course_prod
 {
     class DB
     {
-        SqlConnection connetion = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True");
+        SqlConnection connetion = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;DataBase=KP;Trusted_Connection=True;");
         public void openConnection()
         {
             if (connetion.State == System.Data.ConnectionState.Closed)

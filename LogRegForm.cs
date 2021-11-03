@@ -79,7 +79,7 @@ namespace Course_prod
 			SqlDataAdapter adapter = new SqlDataAdapter();
 			DB dB = new DB();
 			DataTable table = new DataTable();
-			SqlCommand command = new SqlCommand("SELECT Password, ID, Login FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection());
+			SqlCommand command = new SqlCommand("SELECT Password, Login FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection());
 			SqlParameter LoginParam = new SqlParameter(@"Login", Login);
 			SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
 			command.Parameters.Add(LoginParam);
@@ -89,7 +89,7 @@ namespace Course_prod
 			if (table.Rows.Count > 0)
 			{
 				MessageBox.Show("Успешная авторизация!");
-				Form2 fr2 = new Form2(Login, Role);
+				MainForm fr2 = new MainForm(Login, Role);
 				fr2.ShowDialog();
 				
 			}
@@ -112,7 +112,7 @@ namespace Course_prod
 			SqlCommand command = new SqlCommand(sqlExpression, connetion);
 			SqlParameter LoginParam = new SqlParameter(@"Login", Login);
 			command.Parameters.Add(LoginParam);
-			Form2 fr2 = new Form2(Login, Role);
+			MainForm fr2 = new MainForm(Login, Role);
 			fr2.ShowDialog();
 		}
 

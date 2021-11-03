@@ -1,7 +1,7 @@
 ﻿
 namespace Course_prod
 {
-    partial class Form3
+    partial class ShowUsersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,49 +30,67 @@ namespace Course_prod
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.butnCLose = new System.Windows.Forms.Button();
-            this.btnDeleteEmptyCell = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1225, 540);
+            this.dataGridView1.Size = new System.Drawing.Size(756, 271);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Логин";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Пароль";
+            this.Column2.MinimumWidth = 8;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Приоритет";
+            this.Column3.MinimumWidth = 8;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 150;
             // 
             // butnCLose
             // 
-            this.butnCLose.Location = new System.Drawing.Point(1071, 571);
+            this.butnCLose.Location = new System.Drawing.Point(667, 306);
             this.butnCLose.Name = "butnCLose";
-            this.butnCLose.Size = new System.Drawing.Size(166, 62);
-            this.butnCLose.TabIndex = 2;
+            this.butnCLose.Size = new System.Drawing.Size(101, 51);
+            this.butnCLose.TabIndex = 1;
             this.butnCLose.Text = "Закрыть";
             this.butnCLose.UseVisualStyleBackColor = true;
+            this.butnCLose.Click += new System.EventHandler(this.butnCLose_Click);
             // 
-            // btnDeleteEmptyCell
-            // 
-            this.btnDeleteEmptyCell.Location = new System.Drawing.Point(840, 571);
-            this.btnDeleteEmptyCell.Name = "btnDeleteEmptyCell";
-            this.btnDeleteEmptyCell.Size = new System.Drawing.Size(209, 62);
-            this.btnDeleteEmptyCell.TabIndex = 3;
-            this.btnDeleteEmptyCell.Text = "Удалить пустые ячейки";
-            this.btnDeleteEmptyCell.UseVisualStyleBackColor = true;
-            // 
-            // Form3
+            // ShowUsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 645);
-            this.Controls.Add(this.btnDeleteEmptyCell);
+            this.ClientSize = new System.Drawing.Size(780, 369);
             this.Controls.Add(this.butnCLose);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "ShowUsersForm";
+            this.Text = "ShowUsersForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -81,7 +99,9 @@ namespace Course_prod
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button butnCLose;
-        private System.Windows.Forms.Button btnDeleteEmptyCell;
     }
 }

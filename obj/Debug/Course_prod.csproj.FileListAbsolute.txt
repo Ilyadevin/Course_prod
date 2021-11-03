@@ -8,4 +8,7 @@ C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.csproj.Generate
 C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.csproj.CoreCompileInputs.cache
 C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.exe
 C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.pdb
-C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.Form2.resources
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.MainForm.resources
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.FiltredStForm.resources
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.ShowAllStForm.resources
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.ShowUsersForm.resources

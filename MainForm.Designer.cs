@@ -1,7 +1,7 @@
 ﻿
 namespace Course_prod
 {
-    partial class Form2
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,6 +51,7 @@ namespace Course_prod
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textNote = new System.Windows.Forms.TextBox();
             this.Exit = new System.Windows.Forms.Button();
+            this.butnShowUsers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // butnAddingStudent
@@ -71,7 +72,7 @@ namespace Course_prod
             this.butnFiltred.TabIndex = 1;
             this.butnFiltred.Text = "Фильтрация списка";
             this.butnFiltred.UseVisualStyleBackColor = true;
-            //this.butnFiltred.Click += new System.EventHandler(this.butnFiltred_Click_1);
+            this.butnFiltred.Click += new System.EventHandler(this.butnFiltred_Click);
             // 
             // butnShowStud
             // 
@@ -81,7 +82,7 @@ namespace Course_prod
             this.butnShowStud.TabIndex = 2;
             this.butnShowStud.Text = "Отображение всего списка";
             this.butnShowStud.UseVisualStyleBackColor = true;
-            //this.butnShowStud.Click += new System.EventHandler(this.butnShowStud_Click_1);
+            this.butnShowStud.Click += new System.EventHandler(this.butnShowStud_Click);
             // 
             // label1
             // 
@@ -247,11 +248,22 @@ namespace Course_prod
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // Form2
+            // butnShowUsers
+            // 
+            this.butnShowUsers.Location = new System.Drawing.Point(337, 507);
+            this.butnShowUsers.Name = "butnShowUsers";
+            this.butnShowUsers.Size = new System.Drawing.Size(300, 60);
+            this.butnShowUsers.TabIndex = 22;
+            this.butnShowUsers.Text = "Отображение всех пользователей";
+            this.butnShowUsers.UseVisualStyleBackColor = true;
+            this.butnShowUsers.Click += new System.EventHandler(this.butnShowUsers_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 766);
+            this.Controls.Add(this.butnShowUsers);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.textNote);
             this.Controls.Add(this.comboBox2);
@@ -274,7 +286,7 @@ namespace Course_prod
             this.Controls.Add(this.butnShowStud);
             this.Controls.Add(this.butnFiltred);
             this.Controls.Add(this.butnAddingStudent);
-            this.Name = "Form2";
+            this.Name = "MainForm";
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -305,5 +317,6 @@ namespace Course_prod
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textNote;
         private System.Windows.Forms.Button Exit;
+        private System.Windows.Forms.Button butnShowUsers;
     }
 }
