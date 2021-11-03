@@ -18,7 +18,7 @@ namespace Course_prod
             InitializeComponent();
             DB dB = new DB();
             dB.openConnection();
-            SqlCommand command = new SqlCommand("SELECT * FROM students where L_base = @L_base", dB.GetConnection()); 
+            SqlCommand command = new SqlCommand("SELECT * FROM students where L_base = @L_base  Order by Surname", dB.GetConnection()); 
             SqlParameter FilterParam = new SqlParameter(@"L_base", "Бюджетная");
             command.Parameters.Add(FilterParam);
             SqlDataReader reader = command.ExecuteReader();

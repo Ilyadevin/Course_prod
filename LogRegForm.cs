@@ -88,14 +88,14 @@ namespace Course_prod
 			adapter.Fill(table);
 			if (table.Rows.Count > 0)
 			{
-				MessageBox.Show("Успешная авторизация!");
+				MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				MainForm fr2 = new MainForm(Login, Role);
 				fr2.ShowDialog();
 				
 			}
 			else
 			{
-				MessageBox.Show("Пароль неверный");
+				MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -120,12 +120,12 @@ namespace Course_prod
 		{
 			if (textRegLogin.Text == "Введите логин")
             {
-				MessageBox.Show("Нужно ввести логин!");
+				MessageBox.Show("Нужно ввести логин!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
             }
 			if (textRegPassword.Text == "Введите пароль")
 			{
-				MessageBox.Show("Нужно ввести пароль!");
+				MessageBox.Show("Нужно ввести пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
             if (isUserExist()) 
@@ -134,7 +134,7 @@ namespace Course_prod
 			}
 			if (strength_check() is false)
             {
-				MessageBox.Show("Недостаточно сложный пароль!");
+				MessageBox.Show("Недостаточно сложный пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
 			DB dB = new DB();
@@ -145,11 +145,11 @@ namespace Course_prod
 			dB.openConnection();
 			if (command.ExecuteNonQuery() == 1)
             {
-				MessageBox.Show("Аккаунт был создан");
+				MessageBox.Show("Аккаунт был создан", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-				MessageBox.Show("Аккаунт не был создан");
+				MessageBox.Show("Аккаунт не был создан", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			dB.closeConnection();
 		}
@@ -164,7 +164,7 @@ namespace Course_prod
 			adapter.Fill(table);
 			if (table.Rows.Count > 0)
 			{
-				MessageBox.Show("Такой логин уже есть! Введите другой");
+				MessageBox.Show("Такой логин уже есть! Введите другой", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return true;
 
 			}

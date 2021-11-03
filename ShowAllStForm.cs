@@ -18,7 +18,7 @@ namespace Course_prod
             InitializeComponent();
             DB dB = new DB();
             dB.openConnection();
-            SqlCommand command = new SqlCommand("SELECT * FROM students Order by S_number", dB.GetConnection());
+            SqlCommand command = new SqlCommand("SELECT * FROM students Order by Surname", dB.GetConnection());
             SqlDataReader reader = command.ExecuteReader();
             List<string[]> data = new List<string[]>();
             while (reader.Read())
