@@ -67,7 +67,6 @@ namespace Course_prod
         }
         private void ShowUsersForm_Load(object sender, EventArgs e)
         {
-            DB dB = new DB();
             dB.openConnection();
             LoadData();
 
@@ -186,6 +185,11 @@ namespace Course_prod
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void butnCLose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

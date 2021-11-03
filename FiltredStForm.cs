@@ -13,15 +13,18 @@ namespace Course_prod
 {
     public partial class FiltredStForm : Form
     {
+        private DB dB = new DB();
+        private SqlCommand command = null;
+        private SqlDataReader reader = null;
         public FiltredStForm()
         {
             InitializeComponent();
-            DB dB = new DB();
+            
             dB.openConnection();
-            SqlCommand command = new SqlCommand("SELECT * FROM students where L_base = @L_base  Order by Surname", dB.GetConnection()); 
+            command = new SqlCommand("SELECT * FROM students where L_base = @L_base  Order by Surname", dB.GetConnection()); 
             SqlParameter FilterParam = new SqlParameter(@"L_base", "Бюджетная");
             command.Parameters.Add(FilterParam);
-            SqlDataReader reader = command.ExecuteReader();
+            reader = command.ExecuteReader();
             List<string[]> data = new List<string[]>();
             while (reader.Read())
             {

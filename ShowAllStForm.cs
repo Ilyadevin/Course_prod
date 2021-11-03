@@ -13,13 +13,15 @@ namespace Course_prod
 {
     public partial class ShowAllStForm : Form
     {
+        private DB dB = new DB();
+        private SqlCommand command = null;
+        private SqlDataReader reader = null;
         public ShowAllStForm()
         {
             InitializeComponent();
-            DB dB = new DB();
             dB.openConnection();
-            SqlCommand command = new SqlCommand("SELECT * FROM students Order by Surname", dB.GetConnection());
-            SqlDataReader reader = command.ExecuteReader();
+            command = new SqlCommand("SELECT * FROM students Order by Surname", dB.GetConnection());
+            reader = command.ExecuteReader();
             List<string[]> data = new List<string[]>();
             while (reader.Read())
             {

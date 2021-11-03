@@ -32,7 +32,6 @@ namespace Course_prod
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowUsersForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.butnCLose = new System.Windows.Forms.Button();
-            this.butnEdit = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,12 +45,11 @@ namespace Course_prod
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 33);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 70);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(929, 648);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 375);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged_1);
@@ -59,21 +57,13 @@ namespace Course_prod
             // 
             // butnCLose
             // 
-            this.butnCLose.Location = new System.Drawing.Point(816, 606);
+            this.butnCLose.Location = new System.Drawing.Point(687, 451);
             this.butnCLose.Name = "butnCLose";
             this.butnCLose.Size = new System.Drawing.Size(101, 51);
             this.butnCLose.TabIndex = 1;
             this.butnCLose.Text = "Закрыть";
             this.butnCLose.UseVisualStyleBackColor = true;
-            // 
-            // butnEdit
-            // 
-            this.butnEdit.Location = new System.Drawing.Point(580, 606);
-            this.butnEdit.Name = "butnEdit";
-            this.butnEdit.Size = new System.Drawing.Size(205, 51);
-            this.butnEdit.TabIndex = 2;
-            this.butnEdit.Text = "Редактирование записи";
-            this.butnEdit.UseVisualStyleBackColor = true;
+            this.butnCLose.Click += new System.EventHandler(this.butnCLose_Click);
             // 
             // menuStrip1
             // 
@@ -83,7 +73,7 @@ namespace Course_prod
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(929, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip2";
             // 
@@ -108,7 +98,7 @@ namespace Course_prod
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 33);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(929, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 34);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -126,9 +116,8 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 681);
+            this.ClientSize = new System.Drawing.Size(800, 514);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.butnEdit);
             this.Controls.Add(this.butnCLose);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
@@ -149,7 +138,6 @@ namespace Course_prod
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button butnCLose;
-        private System.Windows.Forms.Button butnEdit;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;

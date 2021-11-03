@@ -13,6 +13,7 @@ namespace Course_prod
 {
 	public partial class Login : Form
 	{
+		private DB dB = new DB();
 		string connetionString = @"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True";
 		public Login()
 		{
@@ -72,30 +73,34 @@ namespace Course_prod
 
 		private void butn_Auth_Click(object sender, EventArgs e)
 		{
-			string Login = textLogin.Text;
-			string Password = textPassword.Text;
-			int Role = 1;
-			string ID = "0";
-			SqlDataAdapter adapter = new SqlDataAdapter();
-			DB dB = new DB();
-			DataTable table = new DataTable();
-			SqlCommand command = new SqlCommand("SELECT Password, Login FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection());
-			SqlParameter LoginParam = new SqlParameter(@"Login", Login);
-			SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
-			command.Parameters.Add(LoginParam);
-			command.Parameters.Add(PasswordParam);
-			adapter.SelectCommand = command;
-			adapter.Fill(table);
-			if (table.Rows.Count > 0)
+            try
 			{
-				MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				MainForm fr2 = new MainForm(Login, Role);
-				fr2.ShowDialog();
-				
+				string Login = textLogin.Text;
+				string Password = textPassword.Text;
+				SqlDataAdapter adapter = new SqlDataAdapter();
+				DataTable table = new DataTable();
+				SqlCommand command = new SqlCommand("SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection());
+				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
+				SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
+				command.Parameters.Add(LoginParam);
+				command.Parameters.Add(PasswordParam);
+				adapter.SelectCommand = command;
+				adapter.Fill(table);
+				if (table.Rows.Count > 0)
+				{
+					MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
+					fr2.ShowDialog();
+
+				}
+				else
+				{
+					MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				} 
 			}
-			else
+			catch (Exception ex)
 			{
-				MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -118,45 +123,50 @@ namespace Course_prod
 
 		private void butnRegPage_Click(object sender, EventArgs e)
 		{
-			if (textRegLogin.Text == "Введите логин")
-            {
-				MessageBox.Show("Нужно ввести логин!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-            }
-			if (textRegPassword.Text == "Введите пароль")
+			try
 			{
-				MessageBox.Show("Нужно ввести пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
+				if (textRegLogin.Text == "Введите логин")
+				{
+					MessageBox.Show("Нужно ввести логин!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+				if (textRegPassword.Text == "Введите пароль")
+				{
+					MessageBox.Show("Нужно ввести пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+				if (isUserExist())
+				{
+					return;
+				}
+				if (strength_check() is false)
+				{
+					MessageBox.Show("Недостаточно сложный пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+				SqlCommand command = new SqlCommand("INSERT INTO dbo.users (Login, Password, Priority) VALUES (@loginu, @passwordu, @priority)", dB.GetConnection());
+				command.Parameters.Add("@loginu", SqlDbType.VarChar).Value = textRegLogin.Text;
+				command.Parameters.Add("@Passwordu", SqlDbType.VarChar).Value = textRegPassword.Text;
+				command.Parameters.Add("@priority", SqlDbType.Int).Value = 3;
+				dB.openConnection();
+				if (command.ExecuteNonQuery() == 1)
+				{
+					MessageBox.Show("Аккаунт был создан", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				else
+				{
+					MessageBox.Show("Аккаунт не был создан", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				dB.closeConnection();
 			}
-            if (isUserExist()) 
+			catch (Exception ex)
 			{
-				return;
+				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			if (strength_check() is false)
-            {
-				MessageBox.Show("Недостаточно сложный пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
-			DB dB = new DB();
-			SqlCommand command = new SqlCommand("INSERT INTO dbo.users (Login, Password, Priority) VALUES (@loginu, @passwordu, @priority)", dB.GetConnection());
-			command.Parameters.Add("@loginu", SqlDbType.VarChar).Value = textRegLogin.Text;
-			command.Parameters.Add("@Passwordu", SqlDbType.VarChar).Value = textRegPassword.Text;
-			command.Parameters.Add("@priority", SqlDbType.Int).Value = 3;
-			dB.openConnection();
-			if (command.ExecuteNonQuery() == 1)
-            {
-				MessageBox.Show("Аккаунт был создан", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-				MessageBox.Show("Аккаунт не был создан", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-			dB.closeConnection();
 		}
 		public Boolean isUserExist()
         {
 			SqlDataAdapter adapter = new SqlDataAdapter();
-			DB dB = new DB();
 			DataTable table = new DataTable();
 			SqlCommand command = new SqlCommand("SELECT Login FROM Users WHERE Login = @Login", dB.GetConnection());
 			command.Parameters.Add("@Login", SqlDbType.VarChar).Value = textRegLogin.Text;

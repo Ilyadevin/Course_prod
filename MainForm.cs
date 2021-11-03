@@ -13,9 +13,11 @@ namespace Course_prod
     public partial class MainForm : Form
     {
         public int check = 0;
-        short error, a, count;
-        int i = 0;
         string priority = "";
+        private DB dB = new DB();
+        private SqlDataAdapter adapter = null;
+        private DataTable table = null;
+        private SqlCommand command = null;
         public MainForm(string param1, int param2)
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace Course_prod
             else if (param2 == 2)
             {
                 priority = "user";
+                butnShowUsers.Enabled = false;
             }
             if (param2 == 1)
                 priority = "admin";
@@ -55,10 +58,9 @@ namespace Course_prod
             else if (textS_number.Text == "") { label6.ForeColor = Color.Red; }
             if (textS_number.Text != "")
             {
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                DB dB = new DB();
-                DataTable table = new DataTable();
-                SqlCommand command = new SqlCommand("SELECT S_number FROM students WHERE S_number = @s_number", dB.GetConnection());
+                adapter = new SqlDataAdapter();
+                table = new DataTable();
+                command = new SqlCommand("SELECT S_number FROM students WHERE S_number = @s_number", dB.GetConnection());
                 SqlParameter S_numberParam = new SqlParameter(@"s_number", textS_number.Text);
                 command.Parameters.Add(S_numberParam);
                 adapter.SelectCommand = command;
@@ -71,7 +73,6 @@ namespace Course_prod
                 }
                 else
                 {
-                    DB dB1 = new DB();
                     SqlCommand command_insert = new SqlCommand(
                         "insert into dbo.students" +
                             " ( Name, " +
@@ -90,7 +91,7 @@ namespace Course_prod
                             " @S_number, " +
                             " @Score," +
                             " @L_base," +
-                            " @Note)", dB1.GetConnection());
+                            " @Note)", dB.GetConnection());
                     var date = Convert.ToString(dateTimePicker1.Value.Day) + '/' + Convert.ToString(dateTimePicker1.Value.Month) + '/' + Convert.ToString(dateTimePicker1.Value.Year);
                     command_insert.Parameters.Add("@Name", SqlDbType.VarChar).Value = textFirstname.Text;
                     command_insert.Parameters.Add("@Surname", SqlDbType.VarChar).Value = textSurname.Text;
@@ -101,7 +102,7 @@ namespace Course_prod
                     command_insert.Parameters.Add("@Gender", SqlDbType.VarChar).Value = comboBox1.Text;
                     command_insert.Parameters.Add("@L_base", SqlDbType.VarChar).Value = comboBox2.Text;
                     command_insert.Parameters.Add("@Note", SqlDbType.VarChar).Value = textNote.Text;
-                    dB1.openConnection();
+                    dB.openConnection();
                     command_insert.ExecuteNonQuery();
                     MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
