@@ -31,7 +31,6 @@ namespace Course_prod
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.butnGuest = new System.Windows.Forms.Button();
             this.butnRegistration = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.butn_exit = new System.Windows.Forms.Button();
@@ -58,15 +57,14 @@ namespace Course_prod
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(12, 100);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(526, 308);
+            this.tabControl1.Size = new System.Drawing.Size(526, 310);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.butnGuest);
             this.tabPage1.Controls.Add(this.butnRegistration);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.butn_exit);
@@ -78,24 +76,14 @@ namespace Course_prod
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(518, 275);
+            this.tabPage1.Size = new System.Drawing.Size(518, 277);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // butnGuest
-            // 
-            this.butnGuest.Location = new System.Drawing.Point(12, 58);
-            this.butnGuest.Name = "butnGuest";
-            this.butnGuest.Size = new System.Drawing.Size(194, 36);
-            this.butnGuest.TabIndex = 8;
-            this.butnGuest.Text = "Войти как гость";
-            this.butnGuest.UseVisualStyleBackColor = true;
-            this.butnGuest.Click += new System.EventHandler(this.butnGuest_Click);
-            // 
             // butnRegistration
             // 
-            this.butnRegistration.Location = new System.Drawing.Point(12, 113);
+            this.butnRegistration.Location = new System.Drawing.Point(12, 52);
             this.butnRegistration.Name = "butnRegistration";
             this.butnRegistration.Size = new System.Drawing.Size(194, 36);
             this.butnRegistration.TabIndex = 7;
@@ -177,7 +165,7 @@ namespace Course_prod
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(518, 275);
+            this.tabPage2.Size = new System.Drawing.Size(505, 282);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -258,7 +246,8 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 300);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.ClientSize = new System.Drawing.Size(540, 416);
             this.Controls.Add(this.tabControl1);
             this.Name = "Login";
             this.Text = "Login";
@@ -284,7 +273,6 @@ namespace Course_prod
         private System.Windows.Forms.TextBox textLogin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button butnGuest;
         private System.Windows.Forms.Label errorlabel1;
         private System.Windows.Forms.Label errorlabel2;
         private System.Windows.Forms.Button butnClosePage2;

@@ -56,7 +56,7 @@ namespace Course_prod
             // 
             // butnAddingStudent
             // 
-            this.butnAddingStudent.Location = new System.Drawing.Point(337, 215);
+            this.butnAddingStudent.Location = new System.Drawing.Point(324, 292);
             this.butnAddingStudent.Name = "butnAddingStudent";
             this.butnAddingStudent.Size = new System.Drawing.Size(300, 60);
             this.butnAddingStudent.TabIndex = 0;
@@ -66,7 +66,7 @@ namespace Course_prod
             // 
             // butnFiltred
             // 
-            this.butnFiltred.Location = new System.Drawing.Point(337, 319);
+            this.butnFiltred.Location = new System.Drawing.Point(324, 396);
             this.butnFiltred.Name = "butnFiltred";
             this.butnFiltred.Size = new System.Drawing.Size(300, 60);
             this.butnFiltred.TabIndex = 1;
@@ -76,7 +76,7 @@ namespace Course_prod
             // 
             // butnShowStud
             // 
-            this.butnShowStud.Location = new System.Drawing.Point(337, 414);
+            this.butnShowStud.Location = new System.Drawing.Point(324, 491);
             this.butnShowStud.Name = "butnShowStud";
             this.butnShowStud.Size = new System.Drawing.Size(300, 60);
             this.butnShowStud.TabIndex = 2;
@@ -87,7 +87,7 @@ namespace Course_prod
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 47);
+            this.label1.Location = new System.Drawing.Point(53, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 20);
             this.label1.TabIndex = 3;
@@ -96,7 +96,7 @@ namespace Course_prod
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 134);
+            this.label2.Location = new System.Drawing.Point(53, 211);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 20);
             this.label2.TabIndex = 4;
@@ -105,7 +105,7 @@ namespace Course_prod
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 235);
+            this.label3.Location = new System.Drawing.Point(53, 312);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 5;
@@ -114,7 +114,7 @@ namespace Course_prod
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 319);
+            this.label4.Location = new System.Drawing.Point(53, 396);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(175, 20);
             this.label4.TabIndex = 6;
@@ -123,7 +123,7 @@ namespace Course_prod
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(66, 397);
+            this.label5.Location = new System.Drawing.Point(53, 474);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(233, 20);
             this.label5.TabIndex = 7;
@@ -132,7 +132,7 @@ namespace Course_prod
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(66, 474);
+            this.label6.Location = new System.Drawing.Point(53, 551);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(128, 20);
             this.label6.TabIndex = 8;
@@ -141,7 +141,7 @@ namespace Course_prod
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(66, 558);
+            this.label7.Location = new System.Drawing.Point(53, 635);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 20);
             this.label7.TabIndex = 9;
@@ -150,7 +150,7 @@ namespace Course_prod
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(66, 645);
+            this.label8.Location = new System.Drawing.Point(53, 722);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(139, 20);
             this.label8.TabIndex = 10;
@@ -159,7 +159,7 @@ namespace Course_prod
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(333, 47);
+            this.label9.Location = new System.Drawing.Point(320, 124);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 20);
             this.label9.TabIndex = 11;
@@ -167,42 +167,42 @@ namespace Course_prod
             // 
             // textSurname
             // 
-            this.textSurname.Location = new System.Drawing.Point(70, 84);
+            this.textSurname.Location = new System.Drawing.Point(57, 161);
             this.textSurname.Name = "textSurname";
             this.textSurname.Size = new System.Drawing.Size(151, 26);
             this.textSurname.TabIndex = 12;
             // 
             // textFirstname
             // 
-            this.textFirstname.Location = new System.Drawing.Point(70, 182);
+            this.textFirstname.Location = new System.Drawing.Point(57, 259);
             this.textFirstname.Name = "textFirstname";
             this.textFirstname.Size = new System.Drawing.Size(151, 26);
             this.textFirstname.TabIndex = 13;
             // 
             // textLname
             // 
-            this.textLname.Location = new System.Drawing.Point(70, 270);
+            this.textLname.Location = new System.Drawing.Point(57, 347);
             this.textLname.Name = "textLname";
             this.textLname.Size = new System.Drawing.Size(151, 26);
             this.textLname.TabIndex = 14;
             // 
             // textS_number
             // 
-            this.textS_number.Location = new System.Drawing.Point(70, 354);
+            this.textS_number.Location = new System.Drawing.Point(57, 431);
             this.textS_number.Name = "textS_number";
             this.textS_number.Size = new System.Drawing.Size(151, 26);
             this.textS_number.TabIndex = 15;
             // 
             // textScore
             // 
-            this.textScore.Location = new System.Drawing.Point(70, 431);
+            this.textScore.Location = new System.Drawing.Point(57, 508);
             this.textScore.Name = "textScore";
             this.textScore.Size = new System.Drawing.Size(151, 26);
             this.textScore.TabIndex = 16;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(70, 507);
+            this.dateTimePicker1.Location = new System.Drawing.Point(57, 584);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
             this.dateTimePicker1.TabIndex = 17;
@@ -213,7 +213,7 @@ namespace Course_prod
             this.comboBox1.Items.AddRange(new object[] {
             "Мужской",
             "Женский"});
-            this.comboBox1.Location = new System.Drawing.Point(70, 592);
+            this.comboBox1.Location = new System.Drawing.Point(57, 669);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 28);
             this.comboBox1.TabIndex = 18;
@@ -225,14 +225,14 @@ namespace Course_prod
             "Бюджетная",
             "Платная",
             "Лготная"});
-            this.comboBox2.Location = new System.Drawing.Point(70, 679);
+            this.comboBox2.Location = new System.Drawing.Point(57, 756);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(151, 28);
             this.comboBox2.TabIndex = 19;
             // 
             // textNote
             // 
-            this.textNote.Location = new System.Drawing.Point(337, 84);
+            this.textNote.Location = new System.Drawing.Point(324, 161);
             this.textNote.Multiline = true;
             this.textNote.Name = "textNote";
             this.textNote.Size = new System.Drawing.Size(300, 100);
@@ -240,7 +240,7 @@ namespace Course_prod
             // 
             // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(444, 647);
+            this.Exit.Location = new System.Drawing.Point(431, 724);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(193, 60);
             this.Exit.TabIndex = 21;
@@ -250,7 +250,7 @@ namespace Course_prod
             // 
             // butnShowUsers
             // 
-            this.butnShowUsers.Location = new System.Drawing.Point(337, 507);
+            this.butnShowUsers.Location = new System.Drawing.Point(324, 584);
             this.butnShowUsers.Name = "butnShowUsers";
             this.butnShowUsers.Size = new System.Drawing.Size(300, 60);
             this.butnShowUsers.TabIndex = 22;
@@ -262,7 +262,7 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 766);
+            this.ClientSize = new System.Drawing.Size(688, 948);
             this.Controls.Add(this.butnShowUsers);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.textNote);
@@ -287,7 +287,6 @@ namespace Course_prod
             this.Controls.Add(this.butnFiltred);
             this.Controls.Add(this.butnAddingStudent);
             this.Name = "MainForm";
-            this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
 

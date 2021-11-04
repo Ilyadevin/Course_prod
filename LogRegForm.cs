@@ -8,16 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace Course_prod
 {
-	public partial class Login : Form
+	public partial class Login : MaterialForm
 	{
 		private DB dB = new DB();
 		string connetionString = @"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True";
 		public Login()
 		{
 			InitializeComponent();
+			//this.Text = "Эрлингас И.Д. ЭБИ-211";
 			tabPage1.Text = "Авторизация";
 			tabPage2.Text = "Регистрация";
 			textRegLogin.Text = "Введите логин";
@@ -102,23 +105,6 @@ namespace Course_prod
 			{
 				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-		}
-
-
-        private void butnGuest_Click(object sender, EventArgs e)
-        {
-			string Login = "guest";
-			string Password = "guest";
-			int Role = 3;
-			string sqlExpression = "SELECT Password, ID FROM Users WHERE Login = @Login";
-			SqlConnection connetion;
-			connetion = new SqlConnection(connetionString);
-			connetion.Open();
-			SqlCommand command = new SqlCommand(sqlExpression, connetion);
-			SqlParameter LoginParam = new SqlParameter(@"Login", Login);
-			command.Parameters.Add(LoginParam);
-			MainForm fr2 = new MainForm(Login, Role);
-			fr2.ShowDialog();
 		}
 
 		private void butnRegPage_Click(object sender, EventArgs e)

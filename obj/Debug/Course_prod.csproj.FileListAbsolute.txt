@@ -12,3 +12,5 @@ C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.MainForm.resour
 C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.FiltredStForm.resources
 C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.ShowAllStForm.resources
 C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.ShowUsersForm.resources
+C:\Users\Илья\source\repos\Course_prod\bin\Debug\MaterialSkin.dll
+C:\Users\Илья\source\repos\Course_prod\obj\Debug\Course_prod.csproj.CopyComplete

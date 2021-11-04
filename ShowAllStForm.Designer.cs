@@ -30,7 +30,6 @@ namespace Course_prod
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.butnClose = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +39,7 @@ namespace Course_prod
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.butnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,23 +57,13 @@ namespace Course_prod
             this.Column7,
             this.Column8,
             this.Column9});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 56);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1417, 689);
+            this.dataGridView1.Size = new System.Drawing.Size(2080, 689);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // butnClose
-            // 
-            this.butnClose.Location = new System.Drawing.Point(1272, 722);
-            this.butnClose.Name = "butnClose";
-            this.butnClose.Size = new System.Drawing.Size(157, 47);
-            this.butnClose.TabIndex = 1;
-            this.butnClose.Text = "Закрыть";
-            this.butnClose.UseVisualStyleBackColor = true;
-            this.butnClose.Click += new System.EventHandler(this.butnClose_Click);
             // 
             // Column1
             // 
@@ -147,11 +137,21 @@ namespace Course_prod
             this.Column9.ReadOnly = true;
             this.Column9.Width = 150;
             // 
+            // butnClose
+            // 
+            this.butnClose.Location = new System.Drawing.Point(1935, 764);
+            this.butnClose.Name = "butnClose";
+            this.butnClose.Size = new System.Drawing.Size(157, 47);
+            this.butnClose.TabIndex = 1;
+            this.butnClose.Text = "Закрыть";
+            this.butnClose.UseVisualStyleBackColor = true;
+            this.butnClose.Click += new System.EventHandler(this.butnClose_Click);
+            // 
             // ShowAllStForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1441, 781);
+            this.ClientSize = new System.Drawing.Size(2104, 825);
             this.Controls.Add(this.butnClose);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ShowAllStForm";

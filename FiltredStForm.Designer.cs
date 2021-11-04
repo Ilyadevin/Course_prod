@@ -45,7 +45,7 @@ namespace Course_prod
             // 
             // butnClose
             // 
-            this.butnClose.Location = new System.Drawing.Point(1284, 715);
+            this.butnClose.Location = new System.Drawing.Point(2062, 744);
             this.butnClose.Name = "butnClose";
             this.butnClose.Size = new System.Drawing.Size(145, 38);
             this.butnClose.TabIndex = 1;
@@ -67,12 +67,12 @@ namespace Course_prod
             this.Column7,
             this.Column8,
             this.Column9});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 34);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1417, 689);
+            this.dataGridView1.Size = new System.Drawing.Size(2195, 689);
             this.dataGridView1.TabIndex = 2;
             // 
             // Column1
@@ -151,7 +151,7 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1440, 765);
+            this.ClientSize = new System.Drawing.Size(2219, 794);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.butnClose);
             this.Name = "FiltredStForm";

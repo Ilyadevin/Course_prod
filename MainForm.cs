@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
+using MaterialSkin.Controls;
+using MaterialSkin;
 namespace Course_prod
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MaterialForm
     {
         public int check = 0;
         string priority = "";
@@ -34,7 +37,7 @@ namespace Course_prod
             }
             if (param2 == 1)
                 priority = "admin";
-            this.Text += " " + param1 + " " + priority;
+            this.Text += "Эрлингас И.Д. ЭБИ-211 " + param1 + " " + priority;
             comboBox1.SelectedIndex = 1;
             comboBox2.SelectedIndex = 1;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -112,18 +115,21 @@ namespace Course_prod
         private void butnShowUsers_Click(object sender, EventArgs e)
         {
             ShowUsersForm form5 = new ShowUsersForm();
+            form5.Text = "Все пользователи";
             form5.ShowDialog();
         }
 
         private void butnFiltred_Click(object sender, EventArgs e)
         {
             FiltredStForm form4 = new FiltredStForm();
+            form4.Text = "Отфильтрованный список студентов";
             form4.ShowDialog();
         }
 
         private void butnShowStud_Click(object sender, EventArgs e)
         {
             ShowAllStForm form3 = new ShowAllStForm();
+            form3.Text = "Все студенты";
             form3.ShowDialog();
         }
     } 

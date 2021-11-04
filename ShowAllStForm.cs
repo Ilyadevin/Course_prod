@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Course_prod
 {
-    public partial class ShowAllStForm : Form
+    public partial class ShowAllStForm :Form
     {
         private DB dB = new DB();
         private SqlCommand command = null;
