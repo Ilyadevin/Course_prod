@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Course_prod
 {
-    public partial class ShowAllStForm :Form
+    public partial class ShowAllStForm : Form
     {
         DB dB = new DB();
         private SqlCommandBuilder SqlBuilder = null;
@@ -21,10 +21,10 @@ namespace Course_prod
         public ShowAllStForm()
         {
             InitializeComponent();
-		}
+        }
         private void LoadData()
         {
-            try 
+            try
             {
                 dataAdapter = new SqlDataAdapter("SELECT *, 'Delete' as [Command] FROM students", dB.GetConnection());
                 SqlBuilder = new SqlCommandBuilder(dataAdapter);
@@ -40,7 +40,7 @@ namespace Course_prod
                     dataGridView1[10, i] = linkCell;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -66,7 +66,7 @@ namespace Course_prod
 
         private void butnClose_Click(object sender, EventArgs e)
         {
-			this.Close();
+            this.Close();
         }
 
         private void ShowAllStForm_Load(object sender, EventArgs e)

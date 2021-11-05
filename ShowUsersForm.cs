@@ -36,13 +36,14 @@ namespace Course_prod
                 dataSet = new DataSet();
                 dataAdapter.Fill(dataSet, "users");
                 dataGridView1.DataSource = dataSet.Tables["users"];
-                for (int i = 0; i< dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                     dataGridView1[4, i] = linkCell;
                 }
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -80,7 +81,7 @@ namespace Course_prod
         {
             try
             {
-                if(e.ColumnIndex == 4)
+                if (e.ColumnIndex == 4)
                 {
                     string task = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                     if (task == "Delete")
@@ -211,13 +212,93 @@ namespace Course_prod
                     textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
                 }
             }
+            if (dataGridView1.CurrentCell.ColumnIndex == 2)
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (strength_check(textBox.Text) is false)
+                {
+                    MessageBox.Show("Недостаточно сложный пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+                }
+            }
         }
         private void Column_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+
+                
             }
+        }
+        public Boolean strength_check(string text)
+        {
+            int strength = 0;
+            if (text.Length > 5)
+            {
+                strength++;
+                if (ContainsDigit(text)) strength++;
+                if (ContainsLowerLetter(text)) strength++;
+                if (ContainsPunctuation(text)) strength++;
+                if (ContainsSeparator(text)) strength++;
+                if (ContainsUpperLetter(text)) strength++;
+                return true;
+            }
+            else { return false; }
+        }
+
+        static bool ContainsLowerLetter(string pass)
+        {
+            foreach (char c in pass)
+            {
+                if ((Char.IsLetter(c)) && (Char.IsLower(c)))
+                    return true;
+            }
+            return false;
+        }
+
+        static bool ContainsUpperLetter(string pass)
+        {
+            foreach (char c in pass)
+            {
+                if ((Char.IsLetter(c)) && (Char.IsUpper(c)))
+                    return true;
+            }
+            return false;
+        }
+
+        static bool ContainsDigit(string pass)
+        {
+            foreach (char c in pass)
+            {
+                if (Char.IsDigit(c))
+                    return true;
+            }
+            return false;
+        }
+
+        static bool ContainsPunctuation(string pass)
+        {
+            foreach (char c in pass)
+            {
+                if (Char.IsPunctuation(c))
+                    return true;
+            }
+            return false;
+        }
+
+        static bool ContainsSeparator(string pass)
+        {
+            foreach (char c in pass)
+            {
+                if (Char.IsSeparator(c))
+                    return true;
+            }
+            return false;
         }
     }
 }
