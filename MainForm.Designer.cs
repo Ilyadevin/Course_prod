@@ -192,6 +192,7 @@ namespace Course_prod
             this.textS_number.Name = "textS_number";
             this.textS_number.Size = new System.Drawing.Size(151, 26);
             this.textS_number.TabIndex = 15;
+            this.textS_number.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textS_number_KeyPress);
             // 
             // textScore
             // 
@@ -199,6 +200,7 @@ namespace Course_prod
             this.textScore.Name = "textScore";
             this.textScore.Size = new System.Drawing.Size(151, 26);
             this.textScore.TabIndex = 16;
+            this.textScore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textScore_KeyPress_1);
             // 
             // dateTimePicker1
             // 

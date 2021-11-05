@@ -28,7 +28,7 @@ namespace Course_prod
         {
             try
             {
-                dataAdapter = new SqlDataAdapter("SELECT *, 'Delete' as [Delete] FROM users", dB.GetConnection());
+                dataAdapter = new SqlDataAdapter("SELECT *, 'Delete' as [Command] FROM users", dB.GetConnection());
                 SqlBuilder = new SqlCommandBuilder(dataAdapter);
                 SqlBuilder.GetInsertCommand();
                 SqlBuilder.GetUpdateCommand();
@@ -107,6 +107,7 @@ namespace Course_prod
                         dataAdapter.Update(dataSet, "users");
                         dataGridView1.Rows[e.RowIndex].Cells[4].Value = "Delete";
                         newRowAdding = false;
+                        MessageBox.Show("Данные обновлены", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (task == "Update")
                     {
@@ -117,6 +118,7 @@ namespace Course_prod
                         dataAdapter.Update(dataSet, "users");
                         dataGridView1.Rows[e.RowIndex].Cells[4].Value = "Delete";
                         newRowAdding = true;
+                        MessageBox.Show("Данные обновлены", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     ReData();
                 }
@@ -137,7 +139,7 @@ namespace Course_prod
                     DataGridViewRow gridrow = dataGridView1.Rows[rowIndex];
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                     dataGridView1[4, rowIndex] = linkCell;
-                    gridrow.Cells["Delete"].Value = "Update";
+                    gridrow.Cells["Command"].Value = "Update";
                 }
             }
             catch (Exception ex)
@@ -157,7 +159,7 @@ namespace Course_prod
                     DataGridViewRow row = dataGridView1.Rows[lastRow];
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                     dataGridView1[4, lastRow] = linkCell;
-                    row.Cells["Delete"].Value = "Insert";
+                    row.Cells["Command"].Value = "Insert";
                 }
             }
             catch (Exception ex)
@@ -176,8 +178,7 @@ namespace Course_prod
                     DataGridViewRow gridViewRow = dataGridView1.Rows[rowIndex];
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                     dataGridView1[4, rowIndex] = linkCell;
-                    gridViewRow.Cells["Delete"].Value = "Update";
-                    MessageBox.Show("Данные обновлены", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    gridViewRow.Cells["Command"].Value = "Update";
                 }
             }
             catch (Exception ex)
@@ -189,6 +190,34 @@ namespace Course_prod
         private void butnCLose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column_KeyPress);
+            if (dataGridView1.CurrentCell.ColumnIndex == 3)
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (textBox != null)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+                }
+            }
+            if (dataGridView1.CurrentCell.ColumnIndex == 0)
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (textBox != null)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+                }
+            }
+        }
+        private void Column_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

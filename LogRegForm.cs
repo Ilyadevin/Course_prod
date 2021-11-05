@@ -10,13 +10,13 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Text.RegularExpressions;
 
 namespace Course_prod
 {
 	public partial class Login : MaterialForm
 	{
 		private DB dB = new DB();
-		string connetionString = @"Server=(localdb)\MSSQLLocalDB;DataBase=Course_prod_bd;Trusted_Connection=True";
 		public Login()
 		{
 			InitializeComponent();
@@ -76,7 +76,7 @@ namespace Course_prod
 
 		private void butn_Auth_Click(object sender, EventArgs e)
 		{
-            try
+			try
 			{
 				string Login = textLogin.Text;
 				string Password = textPassword.Text;
@@ -99,7 +99,7 @@ namespace Course_prod
 				else
 				{
 					MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				} 
+				}
 			}
 			catch (Exception ex)
 			{
@@ -151,7 +151,7 @@ namespace Course_prod
 			}
 		}
 		public Boolean isUserExist()
-        {
+		{
 			SqlDataAdapter adapter = new SqlDataAdapter();
 			DataTable table = new DataTable();
 			SqlCommand command = new SqlCommand("SELECT Login FROM Users WHERE Login = @Login", dB.GetConnection());
@@ -168,7 +168,7 @@ namespace Course_prod
 			{
 				return false;
 			}
-        }
+		}
 		public Boolean strength_check()
 		{
 			string pass = textRegPassword.Text;
@@ -235,5 +235,6 @@ namespace Course_prod
 			}
 			return false;
 		}
-	}
-}
+    }
+} 
+

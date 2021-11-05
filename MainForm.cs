@@ -54,12 +54,7 @@ namespace Course_prod
 
         private void butnAddingStudent_Click(object sender, EventArgs e)
         {
-
-            if (textSurname.Text == "") { label1.ForeColor = Color.Red; }
-            else if (textFirstname.Text == "") { label2.ForeColor = Color.Red; }
-            else if (textLname.Text == "") { label3.ForeColor = Color.Red; }
-            else if (textS_number.Text == "") { label6.ForeColor = Color.Red; }
-            if (textS_number.Text != "")
+            if (!(textS_number.Text == "" || textSurname.Text == "" || textFirstname.Text == "" || textLname.Text == "" || textScore.Text == ""))
             {
                 adapter = new SqlDataAdapter();
                 table = new DataTable();
@@ -110,6 +105,14 @@ namespace Course_prod
                     MessageBox.Show("Студент добавлен!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            {
+                label1.ForeColor = Color.Red;
+                label2.ForeColor = Color.Red;
+                label3.ForeColor = Color.Red;
+                label4.ForeColor = Color.Red;
+                label5.ForeColor = Color.Red;
+            }
         }
 
         private void butnShowUsers_Click(object sender, EventArgs e)
@@ -131,6 +134,16 @@ namespace Course_prod
             ShowAllStForm form3 = new ShowAllStForm();
             form3.Text = "Все студенты";
             form3.ShowDialog();
+        }
+
+        private void textS_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))) { e.Handled = true; }
+        }
+
+        private void textScore_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))) { e.Handled = true; }
         }
     } 
 }
