@@ -226,7 +226,7 @@ namespace Course_prod
             this.comboBox2.Items.AddRange(new object[] {
             "Бюджетная",
             "Платная",
-            "Лготная"});
+            "Льготная"});
             this.comboBox2.Location = new System.Drawing.Point(57, 756);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(151, 28);
