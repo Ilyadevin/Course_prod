@@ -250,6 +250,7 @@ namespace Course_prod
             this.ClientSize = new System.Drawing.Size(540, 416);
             this.Controls.Add(this.tabControl1);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

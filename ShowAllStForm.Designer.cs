@@ -123,6 +123,7 @@ namespace Course_prod
             this.Controls.Add(this.butnClose);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ShowAllStForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.ShowAllStForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

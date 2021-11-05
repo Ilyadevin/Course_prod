@@ -289,6 +289,7 @@ namespace Course_prod
             this.Controls.Add(this.butnFiltred);
             this.Controls.Add(this.butnAddingStudent);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
