@@ -45,7 +45,7 @@ namespace Course_prod
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 84);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
@@ -58,7 +58,7 @@ namespace Course_prod
             // 
             // butnCLose
             // 
-            this.butnCLose.Location = new System.Drawing.Point(751, 492);
+            this.butnCLose.Location = new System.Drawing.Point(751, 472);
             this.butnCLose.Name = "butnCLose";
             this.butnCLose.Size = new System.Drawing.Size(101, 51);
             this.butnCLose.TabIndex = 1;
@@ -117,7 +117,7 @@ namespace Course_prod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 553);
+            this.ClientSize = new System.Drawing.Size(864, 534);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.butnCLose);
             this.Controls.Add(this.dataGridView1);

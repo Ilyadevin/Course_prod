@@ -101,7 +101,7 @@ namespace Course_prod
                         int rowIndex = dataGridView1.Rows.Count - 2;
                         DataRow row = dataSet.Tables["users"].NewRow();
                         row["Id"] = dataGridView1.Rows[rowIndex].Cells["Id"].Value;
-                        row["Surname"] = dataGridView1.Rows[rowIndex].Cells["Surname"].Value;
+                        row["Surname"] = dataGridView1.Rows[rowIndex].Cells["Фамилия"].Value;
                         row["Name"] = dataGridView1.Rows[rowIndex].Cells["Name"].Value;
                         row["LName"] = dataGridView1.Rows[rowIndex].Cells["LName"].Value;
                         row["BirthDate"] = dataGridView1.Rows[rowIndex].Cells["BirthDate"].Value;

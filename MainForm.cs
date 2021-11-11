@@ -37,7 +37,7 @@ namespace Course_prod
             }
             if (param2 == 1)
                 priority = "admin";
-            this.Text += "Эрлингас И.Д. ЭБИ-211 " + param1 + " " + priority;
+            this.Text = "Эрлингас И.Д. ЭБИ-211 " + param1 + " " + priority;
             comboBox1.SelectedIndex = 1;
             comboBox2.SelectedIndex = 1;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -79,7 +79,8 @@ namespace Course_prod
                             " BirthDate," +
                             " Gender," +
                             " S_number, " +
-                            " Score,L_base, " +
+                            " Score," +
+                            "L_base, " +
                             " Note) values" +
                             " (@Name," +
                             " @Surname," +
