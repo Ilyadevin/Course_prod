@@ -80,7 +80,7 @@ namespace Course_prod
                             " Gender," +
                             " S_number, " +
                             " Score," +
-                            "L_base, " +
+                            " L_base, " +
                             " Note) values" +
                             " (@Name," +
                             " @Surname," +

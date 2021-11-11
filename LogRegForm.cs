@@ -82,7 +82,9 @@ namespace Course_prod
 				string Password = textPassword.Text;
 				SqlDataAdapter adapter = new SqlDataAdapter();
 				DataTable table = new DataTable();
-				SqlCommand command = new SqlCommand("SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection());
+				SqlCommand command = new SqlCommand(
+					"SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection()
+					);
 				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
 				SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
 				command.Parameters.Add(LoginParam);
@@ -130,7 +132,9 @@ namespace Course_prod
 					MessageBox.Show("Недостаточно сложный пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					return;
 				}
-				SqlCommand command = new SqlCommand("INSERT INTO dbo.users (Login, Password, Priority) VALUES (@loginu, @passwordu, @priority)", dB.GetConnection());
+				SqlCommand command = new SqlCommand(
+					"INSERT INTO dbo.users (Login, Password, Priority) VALUES (@loginu, @passwordu, @priority)", dB.GetConnection()
+					);
 				command.Parameters.Add("@loginu", SqlDbType.VarChar).Value = textRegLogin.Text;
 				command.Parameters.Add("@Passwordu", SqlDbType.VarChar).Value = textRegPassword.Text;
 				command.Parameters.Add("@priority", SqlDbType.Int).Value = 3;
@@ -154,7 +158,9 @@ namespace Course_prod
 		{
 			SqlDataAdapter adapter = new SqlDataAdapter();
 			DataTable table = new DataTable();
-			SqlCommand command = new SqlCommand("SELECT Login FROM Users WHERE Login = @Login", dB.GetConnection());
+			SqlCommand command = new SqlCommand(
+				"SELECT Login FROM Users WHERE Login = @Login", dB.GetConnection()
+				);
 			command.Parameters.Add("@Login", SqlDbType.VarChar).Value = textRegLogin.Text;
 			adapter.SelectCommand = command;
 			adapter.Fill(table);

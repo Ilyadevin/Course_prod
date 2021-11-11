@@ -25,7 +25,9 @@ namespace Course_prod
         {
             try
             {
-                dataAdapter = new SqlDataAdapter("SELECT *, 'Delete' as [Command] FROM students", dB.GetConnection());
+                dataAdapter = new SqlDataAdapter(
+                    "SELECT *, 'Delete' as [Command] FROM students where L_base = 'Бюджетная' order by Surname desc", dB.GetConnection()
+                    );
                 SqlBuilder = new SqlCommandBuilder(dataAdapter);
                 SqlBuilder.GetInsertCommand();
                 SqlBuilder.GetUpdateCommand();
