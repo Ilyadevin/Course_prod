@@ -29,5 +29,3 @@ namespace Course_prod
         }
     }
 }
-
-    

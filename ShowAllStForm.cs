@@ -18,9 +18,13 @@ namespace Course_prod
         private DataSet dataSet = null;
         private SqlDataAdapter dataAdapter = null;
         private bool newRowAdding = false;
-        public ShowAllStForm()
+        public ShowAllStForm(string priority)
         {
             InitializeComponent();
+            if (priority == "guest")
+            {
+                dataGridView1.ReadOnly = true;
+            }
         }
         private void LoadData()
         {
@@ -240,4 +244,3 @@ namespace Course_prod
         }
     }
 }
-

@@ -29,6 +29,7 @@ namespace Course_prod
                 priority = "guest";
                 butnAddingStudent.Enabled = false;
                 butnFiltred.Enabled = false;
+                butnShowUsers.Enabled = false;
             }
             else if (param2 == 2)
             {
@@ -132,7 +133,7 @@ namespace Course_prod
 
         private void butnShowStud_Click(object sender, EventArgs e)
         {
-            ShowAllStForm form3 = new ShowAllStForm();
+            ShowAllStForm form3 = new ShowAllStForm(priority);
             form3.Text = "Все студенты";
             form3.ShowDialog();
         }
@@ -146,12 +147,5 @@ namespace Course_prod
         {
             if (!(Char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))) { e.Handled = true; }
         }
-    } 
+    }
 }
-
-
-            
-
-    
-
-
