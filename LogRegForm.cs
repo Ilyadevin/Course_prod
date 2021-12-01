@@ -17,6 +17,9 @@ namespace Course_prod
 	public partial class Login : MaterialForm
 	{
 		private DB dB = new DB();
+		SqlDataAdapter adapter = new SqlDataAdapter();
+		DataTable table = new DataTable();
+		SqlCommand command = new SqlCommand();
 		public Login()
 		{
 			InitializeComponent();
@@ -80,9 +83,7 @@ namespace Course_prod
 			{
 				string Login = textLogin.Text;
 				string Password = textPassword.Text;
-				SqlDataAdapter adapter = new SqlDataAdapter();
-				DataTable table = new DataTable();
-				SqlCommand command = new SqlCommand(
+				command = new SqlCommand(
 					"SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection()
 					);
 				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
@@ -132,7 +133,7 @@ namespace Course_prod
 					MessageBox.Show("Недостаточно сложный пароль!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					return;
 				}
-				SqlCommand command = new SqlCommand(
+				command = new SqlCommand(
 					"INSERT INTO dbo.users (Login, Password, Priority) VALUES (@loginu, @passwordu, @priority)", dB.GetConnection()
 					);
 				command.Parameters.Add("@loginu", SqlDbType.VarChar).Value = textRegLogin.Text;
@@ -156,9 +157,7 @@ namespace Course_prod
 		}
 		public Boolean isUserExist()
 		{
-			SqlDataAdapter adapter = new SqlDataAdapter();
-			DataTable table = new DataTable();
-			SqlCommand command = new SqlCommand(
+			command = new SqlCommand(
 				"SELECT Login FROM Users WHERE Login = @Login", dB.GetConnection()
 				);
 			command.Parameters.Add("@Login", SqlDbType.VarChar).Value = textRegLogin.Text;
