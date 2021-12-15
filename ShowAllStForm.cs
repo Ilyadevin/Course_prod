@@ -15,7 +15,7 @@ namespace Course_prod
     {
         DB dB = new DB();
         private SqlCommandBuilder SqlBuilder = null;
-        private DataSet dataSet = null;
+        private DataTable dataTable = null;
         private SqlDataAdapter dataAdapter = null;
         public ShowAllStForm()
         {
@@ -26,24 +26,28 @@ namespace Course_prod
         {
             try
             {
-                dataAdapter = new SqlDataAdapter("SELECT *, 'Delete' as [Command] FROM students", dB.GetConnection());
+                dataAdapter = new SqlDataAdapter("SELECT * FROM students", dB.GetConnection());
                 SqlBuilder = new SqlCommandBuilder(dataAdapter);
-                SqlBuilder.GetInsertCommand();
-                SqlBuilder.GetUpdateCommand();
-                SqlBuilder.GetDeleteCommand();
-                dataSet = new DataSet();
-                dataAdapter.Fill(dataSet, "students");
-                dataGridView1.DataSource = dataSet.Tables["students"];
+                dataTable = new DataTable("students");
+                dataAdapter.Fill(dataTable);
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    dataGridView1.Rows.Add(
+                        dataTable.Rows[i][1], dataTable.Rows[i][2], dataTable.Rows[i][3], 
+                        dataTable.Rows[i][7], dataTable.Rows[i][4], dataTable.Rows[i][5], 
+                        dataTable.Rows[i][8], dataTable.Rows[i][6], dataTable.Rows[i][9]
+                  );
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void butnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
 }
+
