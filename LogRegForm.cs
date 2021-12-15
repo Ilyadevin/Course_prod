@@ -80,9 +80,10 @@ namespace Course_prod
 			{
 				string Login = textLogin.Text;
 				string Password = textPassword.Text;
-				command = new SqlCommand(
-					"SELECT Password, Login, Priority FROM Users " +
-					"WHERE Login = @Login and Password = @Password", dB.GetConnection()
+				SqlDataAdapter adapter = new SqlDataAdapter();
+				DataTable table = new DataTable();
+				SqlCommand command = new SqlCommand(
+					"SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection()
 					);
 				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
 				SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
@@ -92,10 +93,7 @@ namespace Course_prod
 				adapter.Fill(table);
 				if (table.Rows.Count > 0)
 				{
-					MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
-					fr2.ShowDialog();
-					/*if (Login == (string)table.Rows[0]["Login"] && Password == (string)table.Rows[0]["Password"])
+					if (Login == (string)table.Rows[0]["Login"] && Password == (string)table.Rows[0]["Password"])
 					{
 						MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
@@ -104,17 +102,17 @@ namespace Course_prod
 					else if (Login == (string)table.Rows[0]["Login"] && Password != (string)table.Rows[0]["Password"])
 					{
 						MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}*/
+					}
+
 				}
 				else
 				{
 					MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					/*MessageBox.Show("Аккаунта не существует", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Аккаунта не существует", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 
