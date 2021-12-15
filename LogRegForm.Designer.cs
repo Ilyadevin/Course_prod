@@ -74,18 +74,22 @@ namespace Course_prod
             // 
             // textPassword
             // 
+            this.textPassword.Font = new System.Drawing.Font("Roboto", 11F);
+            this.textPassword.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textPassword.Location = new System.Drawing.Point(154, 76);
             this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(194, 26);
+            this.textPassword.Size = new System.Drawing.Size(194, 34);
             this.textPassword.TabIndex = 3;
             this.textPassword.Enter += new System.EventHandler(this.textRegPassword_Enter);
             this.textPassword.Leave += new System.EventHandler(this.textRegPassword_Leave);
             // 
             // textLogin
             // 
+            this.textLogin.Font = new System.Drawing.Font("Roboto", 11F);
+            this.textLogin.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textLogin.Location = new System.Drawing.Point(153, 24);
             this.textLogin.Name = "textLogin";
-            this.textLogin.Size = new System.Drawing.Size(194, 26);
+            this.textLogin.Size = new System.Drawing.Size(194, 34);
             this.textLogin.TabIndex = 2;
             this.textLogin.Enter += new System.EventHandler(this.textRegLogin_Enter);
             this.textLogin.Leave += new System.EventHandler(this.textRegLogin_Leave);

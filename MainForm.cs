@@ -28,7 +28,7 @@ namespace Course_prod
             {
                 priority = "guest";
                 butnAddingStudent.Enabled = false;
-                butnFiltred.Enabled = false;
+                butnShowStud.Enabled = false;
                 butnShowUsers.Enabled = false;
             }
             else if (param2 == 2)
