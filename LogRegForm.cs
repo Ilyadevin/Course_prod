@@ -16,26 +16,29 @@ namespace Course_prod
 {
 	public partial class Login : MaterialForm
 	{
+		
+
 		private DB dB = new DB();
 		SqlDataAdapter adapter = new SqlDataAdapter();
 		DataTable table = new DataTable();
 		SqlCommand command = new SqlCommand();
+		readonly MaterialSkinManager materialSkinManager;
 		public Login()
 		{
 			InitializeComponent();
-			//this.Text = "Эрлингас И.Д. ЭБИ-211";
-			tabPage1.Text = "Авторизация";
-			tabPage2.Text = "Регистрация";
-			textRegLogin.Text = "Введите логин";
-			textRegPassword.Text = "Введите пароль";
+			materialSkinManager = MaterialSkinManager.Instance;
+			materialSkinManager.AddFormToManage(this);
+			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+			textLogin.Text = "Введите логин";
+			textPassword.Text = "Введите пароль";
 		}
 		private void butnRegistration_Click(object sender, EventArgs e)
 		{
-			tabControl1.SelectedTab = tabControl1.TabPages["TabPage2"];
+			materialTabControl1.SelectedTab = materialTabControl1.TabPages["TabPage2"];
 		}
 		private void butnClosePage2_Click(object sender, EventArgs e)
 		{
-			tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
+			materialTabControl1.SelectedTab = materialTabControl1.TabPages["TabPage1"];
 		}
 
 
