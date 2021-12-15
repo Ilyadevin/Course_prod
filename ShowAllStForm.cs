@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,10 +12,9 @@ using System.Windows.Forms;
 
 namespace Course_prod
 {
-    public partial class ShowAllStForm : Form
+    public partial class ShowAllStForm : MaterialForm
     {
         DB dB = new DB();
-        private SqlCommandBuilder SqlBuilder = null;
         private DataTable dataTable = null;
         private SqlDataAdapter dataAdapter = null;
         public ShowAllStForm()
@@ -27,7 +27,6 @@ namespace Course_prod
             try
             {
                 dataAdapter = new SqlDataAdapter("SELECT * FROM students", dB.GetConnection());
-                SqlBuilder = new SqlCommandBuilder(dataAdapter);
                 dataTable = new DataTable("students");
                 dataAdapter.Fill(dataTable);
                 for (int i = 0; i < dataTable.Rows.Count; i++)
