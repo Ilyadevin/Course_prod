@@ -16,8 +16,6 @@ namespace Course_prod
 {
 	public partial class Login : MaterialForm
 	{
-		
-
 		private DB dB = new DB();
 		SqlDataAdapter adapter = new SqlDataAdapter();
 		DataTable table = new DataTable();
@@ -84,28 +82,34 @@ namespace Course_prod
 				string Password = textPassword.Text;
 				command = new SqlCommand(
 					"SELECT Password, Login, Priority FROM Users " +
-					"WHERE Login = @Login ", dB.GetConnection()
+					"WHERE Login = @Login and Password = @Password", dB.GetConnection()
 					);
 				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
+				SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
 				command.Parameters.Add(LoginParam);
+				command.Parameters.Add(PasswordParam);
 				adapter.SelectCommand = command;
 				adapter.Fill(table);
 				if (table.Rows.Count > 0)
 				{
-					if (Login == (string)table.Rows[0]["Login"] && Password == (string)table.Rows[0]["Password"])
+					MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
+					fr2.ShowDialog();
+					/*if (Login == (string)table.Rows[0]["Login"] && Password == (string)table.Rows[0]["Password"])
 					{
 						MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
 						fr2.ShowDialog();
 					}
-					else
+					else if (Login == (string)table.Rows[0]["Login"] && Password != (string)table.Rows[0]["Password"])
 					{
 						MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
+					}*/
 				}
 				else
 				{
-					MessageBox.Show("Аккаунта не существует", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					/*MessageBox.Show("Аккаунта не существует", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
 				}
 			}
 			catch (Exception ex)
