@@ -29,92 +29,10 @@ namespace Course_prod
 			materialSkinManager = MaterialSkinManager.Instance;
 			materialSkinManager.AddFormToManage(this);
 			materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-			textLogin.Text = "Введите логин";
-			textPassword.Text = "Введите пароль";
 		}
-		private void butnRegistration_Click(object sender, EventArgs e)
+		private void materialButnReg_Click(object sender, EventArgs e)
 		{
-			materialTabControl1.SelectedTab = materialTabControl1.TabPages["TabPage2"];
-		}
-		private void butnClosePage2_Click(object sender, EventArgs e)
-		{
-			materialTabControl1.SelectedTab = materialTabControl1.TabPages["TabPage1"];
-		}
 
-
-		private void textRegLogin_Enter(object sender, EventArgs e)
-		{
-			if (textRegLogin.Text == "Введите логин")
-			{
-				textRegLogin.Text = "";
-			}
-		}
-
-		private void textRegPassword_Enter(object sender, EventArgs e)
-		{
-			if (textRegPassword.Text == "Введите пароль")
-			{
-				textRegPassword.Text = "";
-			}
-
-		}
-
-		private void textRegPassword_Leave(object sender, EventArgs e)
-		{
-			if (textRegPassword.Text == "")
-			{
-				textRegPassword.Text = "Введите пароль";
-			}
-		}
-
-		private void textRegLogin_Leave(object sender, EventArgs e)
-		{
-			if (textRegLogin.Text == "")
-			{
-				textRegLogin.Text = "Введите логин";
-			}
-		}
-
-		private void butn_exit_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-		private void butn_Auth_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				string Login = textLogin.Text;
-				string Password = textPassword.Text;
-				command = new SqlCommand(
-					"SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection()
-					);
-				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
-				SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
-				command.Parameters.Add(LoginParam);
-				command.Parameters.Add(PasswordParam);
-				adapter.SelectCommand = command;
-				adapter.Fill(table);
-				if (table.Rows.Count > 0)
-				{
-					MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
-					fr2.ShowDialog();
-
-				}
-				else
-				{
-					MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
-
-		private void butnRegPage_Click(object sender, EventArgs e)
-		{
 			try
 			{
 				if (textRegLogin.Text == "Введите логин")
@@ -158,6 +76,45 @@ namespace Course_prod
 				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		private void materialRaisedButton2_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string Login = textLogin.Text;
+				string Password = textPassword.Text;
+				command = new SqlCommand(
+					"SELECT Password, Login, Priority FROM Users " +
+					"WHERE Login = @Login ", dB.GetConnection()
+					);
+				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
+				command.Parameters.Add(LoginParam);
+				adapter.SelectCommand = command;
+				adapter.Fill(table);
+				if (table.Rows.Count > 0)
+				{
+					if (Login == (string)table.Rows[0]["Login"] && Password == (string)table.Rows[0]["Password"])
+					{
+						MessageBox.Show("Успешная авторизация!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						MainForm fr2 = new MainForm(Login, (int)table.Rows[0]["Priority"]);
+						fr2.ShowDialog();
+					}
+					else
+					{
+						MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+				else
+				{
+					MessageBox.Show("Аккаунта не существует", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+
 		public Boolean isUserExist()
 		{
 			command = new SqlCommand(
@@ -243,5 +200,56 @@ namespace Course_prod
 			}
 			return false;
 		}
-    }
+        private void butnExit_Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+			materialTabControl1.SelectedTab = materialTabControl1.TabPages["TabPage2"];
+		}
+
+        private void materialRaisedButton3_Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+		private void materialRaisedButnAuth_Click(object sender, EventArgs e)
+		{
+			materialTabControl1.SelectedTab = materialTabControl1.TabPages["TabPage1"];
+		}
+
+		private void textRegLogin_Enter(object sender, EventArgs e)
+		{
+			if (textRegLogin.Text == "Введите логин")
+			{
+				textRegLogin.Text = "";
+			}
+		}
+
+		private void textRegPassword_Enter(object sender, EventArgs e)
+		{
+			if (textRegPassword.Text == "Введите пароль")
+			{
+				textRegPassword.Text = "";
+			}
+
+		}
+
+		private void textRegPassword_Leave(object sender, EventArgs e)
+		{
+			if (textRegPassword.Text == "")
+			{
+				textRegPassword.Text = "Введите пароль";
+			}
+		}
+
+		private void textRegLogin_Leave(object sender, EventArgs e)
+		{
+			if (textRegLogin.Text == "")
+			{
+				textRegLogin.Text = "Введите логин";
+			}
+		}
+	}
 } 

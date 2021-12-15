@@ -133,7 +133,7 @@ namespace Course_prod
 
         private void butnShowStud_Click(object sender, EventArgs e)
         {
-            ShowAllStForm form3 = new ShowAllStForm(priority);
+            ShowAllStForm form3 = new ShowAllStForm();
             form3.Text = "Все студенты";
             form3.ShowDialog();
         }
