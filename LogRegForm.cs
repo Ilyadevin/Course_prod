@@ -83,12 +83,10 @@ namespace Course_prod
 				SqlDataAdapter adapter = new SqlDataAdapter();
 				DataTable table = new DataTable();
 				SqlCommand command = new SqlCommand(
-					"SELECT Password, Login, Priority FROM Users WHERE Login = @Login and Password = @Password", dB.GetConnection()
+					"SELECT Password, Login, Priority FROM Users WHERE Login = @Login", dB.GetConnection()
 					);
 				SqlParameter LoginParam = new SqlParameter(@"Login", Login);
-				SqlParameter PasswordParam = new SqlParameter(@"Password", Password);
 				command.Parameters.Add(LoginParam);
-				command.Parameters.Add(PasswordParam);
 				adapter.SelectCommand = command;
 				adapter.Fill(table);
 				if (table.Rows.Count > 0)
@@ -103,16 +101,15 @@ namespace Course_prod
 					{
 						MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
-
 				}
-				else
+				else if (table.Rows.Count == 0)
 				{
-					MessageBox.Show("Пароль неверный", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Аккаунта не существует", "Information!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Аккаунта не существует", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(ex.Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
